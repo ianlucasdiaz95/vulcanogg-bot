@@ -24,41 +24,46 @@ bot.on('message', (msg) => {
 //Contrato
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
-  const message = msg.text.toLowerCase();
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
 
-  if(message.includes('contrato') || message.includes('contract')){
-    bot.sendMessage(msg.chat.id, 
-    `${name}, te dejamos la información del token:
+    if(message.includes('contrato') || message.includes('contract')){
+      bot.sendMessage(msg.chat.id, 
+      `${name}, te dejamos la información del token:
 
-Binance Smart Chain (BSC)
+  Binance Smart Chain (BSC)
 
-Contrato: 0x2a17dc11a1828725cdb318e0036acf12727d27a2
+  Contrato: 0x2a17dc11a1828725cdb318e0036acf12727d27a2
 
-https://www.coingecko.com/en/coins/arena-token`).then(() => {
-      // reply sent!
-    });
+  https://www.coingecko.com/en/coins/arena-token`).then(() => {
+        // reply sent!
+      });
+    }
   }
+
 });
 
 // Chart
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
-  const message = msg.text.toLowerCase();
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
 
-  if(message.includes('chart') || message.includes('grafico')){
-    bot.sendMessage(msg.chat.id, 
-    `${name}, acá podes ver el chart de $ARENA
+    if(message.includes('chart') || message.includes('grafico')){
+      bot.sendMessage(msg.chat.id, 
+      `${name}, acá podes ver el chart de $ARENA
 
-https://poocoin.app/tokens/0x2a17dc11a1828725cdb318e0036acf12727d27a2`).then(() => {
-      // reply sent!
-    });
+  https://poocoin.app/tokens/0x2a17dc11a1828725cdb318e0036acf12727d27a2`).then(() => {
+        // reply sent!
+      });
+    }
   }
 });
 
 //Welcome
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
-
+  console.log(msg.new_chat_participant);
   if(msg.new_chat_participant || false){
     let messageNumber = Math.floor((Math.random() * 4) + 1);
     if (messageNumber == 1){
