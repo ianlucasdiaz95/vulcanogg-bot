@@ -63,16 +63,15 @@ bot.on('message', (msg) => {
 //Welcome
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
-  console.log(msg['new_chat_participant']);
-  if(msg['new_chat_participant'] || false){
+  if(msg.new_chat_participant || false){
     let messageNumber = Math.floor((Math.random() * 4) + 1);
     if (messageNumber == 1){
-      let messageText = `Hola ${name}, bienvenido al grupo 🚀🚀🚀`;
+      let messageText = `Hola ${name}, bienvenido/a al grupo 🚀🚀🚀`;
       bot.sendMessage(chatID, messageText).then(() => {
         // reply sent!
       });
     } else if (messageNumber == 2) {
-        let messageText = `Bienvenido ${name}, cualquier duda que tengas te respondemos con gusto 😄`;
+        let messageText = `Bienvenido/a ${name}, cualquier duda que tengas te respondemos con gusto 😄`;
         bot.sendMessage(chatID, messageText).then(() => {
           // reply sent!
         });
@@ -82,7 +81,7 @@ bot.on('message', (msg) => {
           // reply sent!
         });
     } else {
-        let messageText = `Hola ${name}, bienvenido al grupo ⚔️⚔️⚔️🚀`;
+        let messageText = `Hola ${name}, bienvenido/a al grupo ⚔️⚔️⚔️🚀`;
         bot.sendMessage(chatID, messageText).then(() => {
           // reply sent!
         });
