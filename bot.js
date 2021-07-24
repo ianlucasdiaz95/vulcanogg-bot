@@ -59,7 +59,7 @@ https://poocoin.app/tokens/0x2a17dc11a1828725cdb318e0036acf12727d27a2`).then(() 
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
 
-  if(msg.new_chat_participant.first_name || false){
+  if(msg.new_chat_participant || false){
     let messageNumber = Math.floor((Math.random() * 4) + 1);
     if (messageNumber == 1){
       let messageText = `Hola ${name}, bienvenido al grupo 🚀🚀🚀`;
