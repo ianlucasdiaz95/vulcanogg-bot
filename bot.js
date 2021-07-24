@@ -63,8 +63,8 @@ bot.on('message', (msg) => {
 //Welcome
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
-  console.log(msg.new_chat_participant);
-  if(msg.new_chat_participant || false){
+  console.log(msg['new_chat_participant']);
+  if(msg['new_chat_participant'] || false){
     let messageNumber = Math.floor((Math.random() * 4) + 1);
     if (messageNumber == 1){
       let messageText = `Hola ${name}, bienvenido al grupo 🚀🚀🚀`;
