@@ -76,7 +76,7 @@ bot.on('message', (msg) => {
           // reply sent!
         });
     } else if (messageNumber == 3) {
-        let messageText = `Hola ${name}, ya compraste tus ArenaSwap? 🔥🔥🔥🔥🔥`;
+        let messageText = `Hola ${name}, ya compraste tus $ARENA? 🔥🔥🔥🔥🔥`;
         bot.sendMessage(chatID, messageText).then(() => {
           // reply sent!
         });
