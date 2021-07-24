@@ -91,7 +91,7 @@ bot.on('message', (msg) => {
 });
 
 // Cron 1
-cron.schedule('0 0 */3 * *', () => {
+cron.schedule('0 0 11,12,14,16,18,20,22,00,02,04,06 * *', () => {
   bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
 
 Un pequeño resumen de lo que el equipo de ArenaSwap estuvo haciendo hoy:
@@ -111,7 +111,7 @@ Estate atento para más novedades y quedate con nosotros que nos vamos a la LUNA
 
 
 //Cron 2
-cron.schedule('0 0 */2 * *', () => {
+cron.schedule('0 30 11,12,14,16,18,20,22,00,02,04,06 * *', () => {
   bot.sendMessage(chatID, `Web Oficial ArenaSwap
 https://arenaswap.com/
 
