@@ -66,7 +66,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if(message.includes('preventa') || message.includes('pyram')){
+    if(message.includes('preventa') || ( message.includes('como') && message.includes('pyram'))){
       bot.sendMessage(msg.chat.id, 
       `${name}, para acceder a la preventa de $PYRAM debes tener 100 $ARENAS en tu wallet o en staking, acceder al siguiente link y completar el formulario:
 
