@@ -87,7 +87,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
+    if(message.includes('utilidad') || (message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
       bot.sendMessage(msg.chat.id, 
       `Arena es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
         // reply sent!
