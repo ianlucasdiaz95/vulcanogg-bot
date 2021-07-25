@@ -60,6 +60,38 @@ bot.on('message', (msg) => {
   }
 });
 
+// Preventa
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if(message.includes('preventa') || message.includes('pyram')){
+      bot.sendMessage(msg.chat.id, 
+      `${name}, para acceder a la preventa de $PYRAM debes tener 100 $ARENAS en tu wallet o en staking, acceder al siguiente link y completar el formulario:
+
+https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
+// Staking
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if((message.includes('como') && message.includes('staking')) || (message.includes('hacer') && message.includes('staking'))){
+      bot.sendMessage(msg.chat.id, 
+      `Te dejo un video para aprender a hacer staking con Arena https://youtu.be/kudDB72Y6BM`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
 //Welcome
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
@@ -91,21 +123,25 @@ bot.on('message', (msg) => {
 });
 
 // Cron 1
-cron.schedule('0 0-23/2 * * *', () => {
+cron.schedule('30 0-23/2 * * *', () => {
   bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
 
-Un pequeño resumen de lo que el equipo de ArenaSwap estuvo haciendo hoy:
--Contratación de anuncios en la plataforma Poocoin, a la espera de aprobación 📊
--También se pagaron anuncios en CoinGecko, actualmente esperando aprobación 📊
--Le pagamos a Defiapecall para que nos anuncie en su grupo de Telegram de más de 540k suscriptores (un total de 5 posts) 🙉
+NOVEDADES!!
+
+-Ya estan funcionando las campañas de anuncios en Poocoin 📊
+-Estamos esperando aprobación de los anuncios en CoinGecko 📊
 -Estamos armando un partner con dos influencers franceses para seguir creciendo 🇫🇷
 -Tenemos una review esperando publicación en Yahoo Finance 🔥
 -Ya enviamos y pagamos una solicitud a CoinMarketCap para que nos listen cuanto antes 🔥
--Seguimos creciendo en los grupos de Telegram todos los días 🪐
--Lanzamos un sorteo en Twitter (podes participar!) 😍
--Nuevo torneito de Shilling para los que quieran empujar el proyecto (40 $ARENA repartidos entre los participantes) 😍
+-Seguimos creciendo en los grupos de Telegram todos los días (ya +10K suscriptores en el grupo de Telegram oficial en Ingles) 🪐
 
-Ya tenemos 3700+ holders / 7Millones en MCap / Llegamos a 16$ ATH!! / 2.4 Millones TVL
+YAHOO FINANCE saco una nota acerca de ArenaSwap, podes leerla acá:
+
+https://finance.yahoo.com/news/arenaswap-first-bsc-based-platform-073400660.html
+
+La misma también salio en otras plataformas como Techbullion, Benzinga y Marketwatch.
+
+Ya tenemos 4000+ holders / 5Millones en MCap / Llegamos a 16$ ATH!! / 2.2 Millones TVL
 Estate atento para más novedades y quedate con nosotros que nos vamos a la LUNA ⚔️🚀🚀🚀⚔️`);
 });
 
@@ -126,9 +162,6 @@ https://twitter.com/ArenaSwap
 
 ⚔️ 📝 Reddit:
 https://www.reddit.com/r/ArenaSwap
-
-Canal de Telegram en Ingles
-https://t.me/arenaswap
 
 Canal de Telegram en Ingles
 https://t.me/arenaswap
