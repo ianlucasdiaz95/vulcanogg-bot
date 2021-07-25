@@ -1,7 +1,7 @@
 const token = process.env.TOKEN || '1751039035:AAFALSaB5XB_SkYzCXYztM_YUMWFUxsCZGY';
 var cron = require('node-cron');
-//var chatID = '-1001518577650';
-var chatID = '1872721997'
+var chatID = '-1001518577650';
+//var chatID = '1872721997'
 const Bot = require('node-telegram-bot-api');
 let bot;
 
@@ -31,11 +31,15 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, 
       `${name}, te dejamos la información del token:
 
-  Binance Smart Chain (BSC)
+Binance Smart Chain (BSC)
 
-  Contrato: 0x2a17dc11a1828725cdb318e0036acf12727d27a2
+Contrato $ARENA: 
+0x2a17dc11a1828725cdb318e0036acf12727d27a2
 
-  https://www.coingecko.com/en/coins/arena-token`).then(() => {
+Contrato $PYRAM:
+No revelado aún, sera anunciado en los próximos días.
+
+`).then(() => {
         // reply sent!
       });
     }
@@ -60,22 +64,37 @@ bot.on('message', (msg) => {
   }
 });
 
-// Preventa
-/*bot.on('message', (msg) => {
+// Lanzamiento
+bot.on('message', (msg) => {
   const name = msg.from.first_name;
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if(message.includes('preventa') || ( message.includes('como') && message.includes('pyram'))){
+    if(message.includes('lanzamiento') || ( message.includes('cuando') && message.includes('sale')) || ( message.includes('estreno') && message.includes('juego'))){
       bot.sendMessage(msg.chat.id, 
-      `${name}, para acceder a la preventa de $PYRAM debes tener 200 USD en $ARENA en tu wallet o en staking, acceder al siguiente link y completar el formulario:
-
-https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`).then(() => {
+      `${name}, El juego sale en la semana del 26, aun no especificaron el dia.
+      
+Apenas tengamos la fecha exacta la vamos a estar comunicandolo en la sección de anuncios.`).then(() => {
         // reply sent!
       });
     }
   }
-});*/
+});
+
+// Utilidad
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if((message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
+      bot.sendMessage(msg.chat.id, 
+      `Arena es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
 
 // Staking
 bot.on('message', (msg) => {
@@ -123,7 +142,7 @@ bot.on('message', (msg) => {
 });
 
 // Cron 1
-cron.schedule('30 0-23/2 * * *', () => {
+cron.schedule('35 0-23/2 * * *', () => {
   bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
 
 NOVEDADES!!
