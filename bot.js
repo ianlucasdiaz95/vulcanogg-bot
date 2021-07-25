@@ -1,7 +1,7 @@
 const token = process.env.TOKEN || '1751039035:AAFALSaB5XB_SkYzCXYztM_YUMWFUxsCZGY';
 var cron = require('node-cron');
-var chatID = '-1001518577650';
-//var chatID = '1872721997'
+//var chatID = '-1001518577650';
+var chatID = '1872721997'
 const Bot = require('node-telegram-bot-api');
 let bot;
 
@@ -61,7 +61,7 @@ bot.on('message', (msg) => {
 });
 
 // Preventa
-bot.on('message', (msg) => {
+/*bot.on('message', (msg) => {
   const name = msg.from.first_name;
   if('text' in msg){
     const message = msg.text.toLowerCase();
@@ -75,7 +75,7 @@ https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`).then(() => {
       });
     }
   }
-});
+});*/
 
 // Staking
 bot.on('message', (msg) => {
@@ -130,7 +130,7 @@ NOVEDADES!!
 
 -Ya estan funcionando las campañas de anuncios en Poocoin 📊
 -Estamos esperando aprobación de los anuncios en CoinGecko 📊
--Estamos armando un partner con dos influencers franceses para seguir creciendo 🇫🇷
+-Hicimos un partner con dos influencers franceses para que twiteen sobre nosotros 🇫🇷
 -Ya enviamos y pagamos una solicitud a CoinMarketCap para que nos listen cuanto antes 🔥
 -Seguimos creciendo en los grupos de Telegram todos los días (ya +10K suscriptores en el grupo de Telegram oficial en Ingles) 🪐
 
@@ -171,25 +171,6 @@ https://www.coingecko.com/en/coins/arena-token
 
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
 ¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`);
-});
-
-// Cron 3
-cron.schedule('55 * * * *', () => {
-  bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
-
-⚔️⚔️⚔️ PREVENTA $PYRAM ⚔️⚔️⚔️
-
-1) La entrada al whitelist de la preventa de $PYRAM cierra a las 10PM UTC de hoy!
-2) La dirección de los usuarios que entraron al whitelist sera anunciada mañana a las 1PM UTC
-3) El contrato de la moneda sera anunciado una vez se informe el whitelist
-4) La preventa de la comunidad comienza a las 2PM UTC. Las direcciones en la whitelist tienen una hora para participar
-5) La preventa pública comienza a las 3pm UTC
-6) La preventa termina cuando se llegue al hardcap o cuando se termine el tiempo 24hs después (27 de julio 2PM UTC)
-7) La venta en Pancakeswap comenzará al finalizar la fase de preventa
-
-Para acceder a la preventa de $PYRAM debes tener 200 USD en $ARENA en tu wallet o en staking, acceder al siguiente link y completar el formulario:
-
-https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`);
 });
 
 module.exports = bot;
