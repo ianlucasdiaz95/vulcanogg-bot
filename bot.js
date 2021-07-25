@@ -83,7 +83,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if( (message.includes('como') && (message.includes('staking') || message.includes('stake')) ) || (message.includes('hacer') && (message.includes('staking') || message.includes('stake')) )){
+    if( (message.includes('como') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) ) || (message.includes('hacer') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) )){
       bot.sendMessage(msg.chat.id, 
       `Te dejo un video para aprender a hacer staking con Arena https://youtu.be/kudDB72Y6BM`).then(() => {
         // reply sent!
