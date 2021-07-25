@@ -68,7 +68,7 @@ bot.on('message', (msg) => {
 
     if(message.includes('preventa') || ( message.includes('como') && message.includes('pyram'))){
       bot.sendMessage(msg.chat.id, 
-      `${name}, para acceder a la preventa de $PYRAM debes tener 100 $ARENAS en tu wallet o en staking, acceder al siguiente link y completar el formulario:
+      `${name}, para acceder a la preventa de $PYRAM debes tener 200 USD en $ARENA en tu wallet o en staking, acceder al siguiente link y completar el formulario:
 
 https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`).then(() => {
         // reply sent!
@@ -83,7 +83,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('como') && message.includes('staking')) || (message.includes('hacer') && message.includes('staking'))){
+    if( (message.includes('como') && (message.includes('staking') || message.includes('stake')) ) || (message.includes('hacer') && (message.includes('staking') || message.includes('stake')) )){
       bot.sendMessage(msg.chat.id, 
       `Te dejo un video para aprender a hacer staking con Arena https://youtu.be/kudDB72Y6BM`).then(() => {
         // reply sent!
@@ -131,7 +131,6 @@ NOVEDADES!!
 -Ya estan funcionando las campañas de anuncios en Poocoin 📊
 -Estamos esperando aprobación de los anuncios en CoinGecko 📊
 -Estamos armando un partner con dos influencers franceses para seguir creciendo 🇫🇷
--Tenemos una review esperando publicación en Yahoo Finance 🔥
 -Ya enviamos y pagamos una solicitud a CoinMarketCap para que nos listen cuanto antes 🔥
 -Seguimos creciendo en los grupos de Telegram todos los días (ya +10K suscriptores en el grupo de Telegram oficial en Ingles) 🪐
 
@@ -172,6 +171,25 @@ https://www.coingecko.com/en/coins/arena-token
 
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
 ¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`);
+});
+
+// Cron 3
+cron.schedule('55 * * * *', () => {
+  bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
+
+⚔️⚔️⚔️ PREVENTA $PYRAM ⚔️⚔️⚔️
+
+1) La entrada al whitelist de la preventa de $PYRAM cierra a las 10PM UTC de hoy!
+2) La dirección de los usuarios que entraron al whitelist sera anunciada mañana a las 1PM UTC
+3) El contrato de la moneda sera anunciado una vez se informe el whitelist
+4) La preventa de la comunidad comienza a las 2PM UTC. Las direcciones en la whitelist tienen una hora para participar
+5) La preventa pública comienza a las 3pm UTC
+6) La preventa termina cuando se llegue al hardcap o cuando se termine el tiempo 24hs después (27 de julio 2PM UTC)
+7) La venta en Pancakeswap comenzará al finalizar la fase de preventa
+
+Para acceder a la preventa de $PYRAM debes tener 200 USD en $ARENA en tu wallet o en staking, acceder al siguiente link y completar el formulario:
+
+https://sweepwidget.com/view/27869-50okyis9/i13ftf-27869`);
 });
 
 module.exports = bot;
