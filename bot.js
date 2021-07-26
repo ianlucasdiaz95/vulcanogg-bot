@@ -37,7 +37,7 @@ Contrato $ARENA:
 0x2a17dc11a1828725cdb318e0036acf12727d27a2
 
 Contrato $PYRAM:
-No revelado aún, sera anunciado en los próximos días.
+0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
 
 `).then(() => {
         // reply sent!
@@ -57,7 +57,7 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, 
       `${name}, acá podes ver el chart de $ARENA
 
-  https://poocoin.app/tokens/0x2a17dc11a1828725cdb318e0036acf12727d27a2`).then(() => {
+https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`).then(() => {
         // reply sent!
       });
     }
@@ -87,7 +87,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
+    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
       bot.sendMessage(msg.chat.id, 
       `$ARENA es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
         // reply sent!
@@ -102,7 +102,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('utilidad') && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && message.includes('utilidad'))){
+    if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || (message.includes('utilidad') && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && message.includes('utilidad'))){
       bot.sendMessage(msg.chat.id, 
       `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`).then(() => {
         // reply sent!
@@ -199,12 +199,32 @@ https://www.reddit.com/r/ArenaSwap
 Canal de Telegram en Ingles
 https://t.me/arenaswap
 
-Información del Token
+Información del Token $ARENA
 Contrato: 0x2a17dc11a1828725cdb318e0036acf12727d27a2
-https://www.coingecko.com/en/coins/arena-token
+
+Información del Token $PYRAM
+Contrato: 0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
 
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
 ¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`);
+});
+
+//Cron 2
+cron.schedule('20 0-23/8 * * *', () => {
+  bot.sendMessage(chatID, `✅* Tareas diarias de la comunidad *✅
+
+Entra en CoinGecko y hace un Scroll y algunos clicks para mostrar que hay tráfico🔥⬆️
+https://www.coingecko.com/en/coins/arena-token?utm_medium=telegram&utm_source=ArenaSwapES
+
+Vota por ArenaSwap 🔥⬆️
+https://coinsniper.net/coin/5626?utm_medium=telegram&utm_source=ArenaSwapES
+
+Seguinos, Comenta  y vota  🔥⬆️✅
+https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
+
+Seguinos, dejanos un like  y retweet  🔥⬆️
+
+https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`);
 });
 
 module.exports = bot;
