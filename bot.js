@@ -83,7 +83,7 @@ Contrato $PYRAM:
 
 Binance Smart Chain (BSC)
 
-`,{parse_mode : "HTML", 'disable_web_page_preview': true},).then(() => {
+`,{parse_mode : "HTML", 'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -278,7 +278,7 @@ Contrato $PYRAM:
 <a href="https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">CLICK ACÁ PARA COMPRAR $PYRAM 🔥</a>
 
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
-¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`,{'disable_web_page_preview': true});
+¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`,{parse_mode : "HTML", 'disable_web_page_preview': true});
 });
 
 //Cron 2
