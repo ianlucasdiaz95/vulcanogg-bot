@@ -27,7 +27,7 @@ bot.on('message', (msg) => {
     const message = msg.text.toLowerCase();
 
     var texto = '';
-    if(message.includes('compro') || message.includes('comprar')){
+    if(message.includes('compro') || message.includes('compra')){
       texto = 'Para comprar el token: '
     }
 
@@ -35,7 +35,7 @@ bot.on('message', (msg) => {
       texto = 'Te dejo el contrato del token: '
     }
 
-    if(((message.includes('compro') || message.includes('comprar')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('arena')){
+    if(((message.includes('compro') || message.includes('compra')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('arena')){
       bot.sendMessage(msg.chat.id, 
       `${texto}
       
@@ -62,7 +62,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
     var texto = '';
-    if(message.includes('compro') || message.includes('comprar')){
+    if(message.includes('compro') || message.includes('compra')){
       texto = 'Para comprar el token: '
     }
 
@@ -70,7 +70,7 @@ bot.on('message', (msg) => {
       texto = 'Te dejo el contrato del token: '
     }
 
-    if(((message.includes('compro') || message.includes('comprar')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('pyram')){
+    if(((message.includes('compro') || message.includes('compra')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
       `${texto}
 
@@ -98,9 +98,9 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('price') || message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
+    if(((message.includes('precio') && message.includes('?')) || message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
       bot.sendMessage(msg.chat.id,
-      `Chart de $ARENA 🚀🚀🚀
+      `Gráfico y precio de $ARENA 🚀🚀🚀
 
 https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`, {'disable_web_page_preview': true}).then(() => {
         // reply sent!
@@ -115,9 +115,9 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('price') || message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
+    if(((message.includes('precio') && message.includes('?')) || message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
-      `Chart de $PYRAM 🚀🚀🚀
+      `Gráfico y precio de $PYRAM 🚀🚀🚀
 
 https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
@@ -134,9 +134,9 @@ bot.on('message', (msg) => {
 
     if(message.includes('lanzamiento') || ( message.includes('cuando') && message.includes('sale')) || ( message.includes('estreno') && message.includes('juego'))){
       bot.sendMessage(msg.chat.id, 
-      `${name}, El juego sale en la semana del 26, aun no especificaron el dia.
-      
-Apenas tengamos la fecha exacta la vamos a estar comunicandolo en la sección de anuncios.`).then(() => {
+      `${name}, Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto. 
+
+  Les vamos avisando a medida que tengamos más novedades.`).then(() => {
         // reply sent!
       });
     }
@@ -149,7 +149,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('utilidad') && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && message.includes('utilidad'))){
+    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
       `$ARENA es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
         // reply sent!
@@ -164,7 +164,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || (message.includes('utilidad') && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && message.includes('utilidad'))){
+    if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
       `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`).then(() => {
         // reply sent!
@@ -235,24 +235,11 @@ bot.on('message', (msg) => {
 
 // Cron 1
 cron.schedule('35 0-23/2 * * *', () => {
-  bot.sendMessage(chatID, `ARENASWAP OFICIAL ESPAÑOL
+  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto. 
 
-NOVEDADES!!
+  Les vamos avisando a medida que tengamos más novedades.
 
--Ya estan funcionando las campañas de anuncios en Poocoin 📊
--Estamos esperando aprobación de los anuncios en CoinGecko 📊
--Hicimos un partner con dos influencers franceses para que twiteen sobre nosotros 🇫🇷
--Ya enviamos y pagamos una solicitud a CoinMarketCap para que nos listen cuanto antes 🔥
--Seguimos creciendo en los grupos de Telegram todos los días (ya +10K suscriptores en el grupo de Telegram oficial en Ingles) 🪐
-
-YAHOO FINANCE saco una nota acerca de ArenaSwap, podes leerla acá:
-
-https://finance.yahoo.com/news/arenaswap-first-bsc-based-platform-073400660.html
-
-La misma también salio en otras plataformas como Techbullion, Benzinga y Marketwatch.
-
-Ya tenemos 4000+ holders / 5Millones en MCap / Llegamos a 16$ ATH!! / 2.2 Millones TVL
-Estate atento para más novedades y quedate con nosotros que nos vamos a la LUNA ⚔️🚀🚀🚀⚔️`,{'disable_web_page_preview': true});
+  ⚔️🚀🚀🚀⚔️ ARENASWAP OFICIAL ESPAÑOL ⚔️🚀🚀🚀⚔️`,{'disable_web_page_preview': true});
 });
 
 
