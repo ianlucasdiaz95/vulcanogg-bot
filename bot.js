@@ -35,7 +35,7 @@ bot.on('message', (msg) => {
       texto = 'Te dejo el contrato del token: '
     }
 
-    if((message.includes('compro') || message.includes('comprar') || (message.includes('contrato') || message.includes('contract')) && (message.includes('cual') || message.includes('como'))) && message.includes('pyram')){
+    if(((message.includes('compro') || message.includes('comprar')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('arena')){
       bot.sendMessage(msg.chat.id, 
       `${texto}
       
@@ -44,11 +44,12 @@ Contrato $ARENA:
 
 💰 Compra $ARENA
 
-https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2
+<a href="https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2">Hace click acá para ir al exchange✅</a>
+
 
 Binance Smart Chain (BSC)
 
-`).then(() => {
+`,{parse_mode : "HTML", 'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -69,7 +70,7 @@ bot.on('message', (msg) => {
       texto = 'Te dejo el contrato del token: '
     }
 
-    if((message.includes('compro') || message.includes('comprar') || (message.includes('contrato') || message.includes('contract')) && (message.includes('cual') || message.includes('como'))) && message.includes('pyram')){
+    if(((message.includes('compro') || message.includes('comprar')) || (message.includes('contrato') || message.includes('contract'))) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
       `${texto}
 
@@ -78,11 +79,11 @@ Contrato $PYRAM:
 
 💰 Compra $PYRAM
 
-https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+<a href="https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Hace click acá para ir al exchange✅</a>
 
 Binance Smart Chain (BSC)
 
-`).then(() => {
+`,{parse_mode : "HTML", 'disable_web_page_preview': true},).then(() => {
         // reply sent!
       });
     }
@@ -97,11 +98,11 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
-      bot.sendMessage(msg.chat.id, 
+    if((message.includes('price') || message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
+      bot.sendMessage(msg.chat.id,
       `Chart de $ARENA 🚀🚀🚀
 
-https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`).then(() => {
+https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`, {'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -114,11 +115,11 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
+    if((message.includes('price') || message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
       `Chart de $PYRAM 🚀🚀🚀
 
-https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`).then(() => {
+https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -195,7 +196,7 @@ bot.on('message', (msg) => {
 
     if( (message.includes('pyram') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) ) || (message.includes('cuando') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) )){
       bot.sendMessage(msg.chat.id, 
-      `Cuenta regresiva para la farm de $PYRAM: https://bscscan.com/block/countdown/9582560`).then(() => {
+      `Cuenta regresiva para la farm de $PYRAM: https://bscscan.com/block/countdown/9582560`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -224,7 +225,7 @@ bot.on('message', (msg) => {
         });
     } else {
         let messageText = `Hola ${name}, bienvenido/a al grupo ⚔️⚔️⚔️🚀`;
-        bot.sendMessage(chatID, messageText).then(() => {
+        bot.sendMessage(chatID, messageText,[], true).then(() => {
           // reply sent!
         });
     }
@@ -251,7 +252,7 @@ https://finance.yahoo.com/news/arenaswap-first-bsc-based-platform-073400660.html
 La misma también salio en otras plataformas como Techbullion, Benzinga y Marketwatch.
 
 Ya tenemos 4000+ holders / 5Millones en MCap / Llegamos a 16$ ATH!! / 2.2 Millones TVL
-Estate atento para más novedades y quedate con nosotros que nos vamos a la LUNA ⚔️🚀🚀🚀⚔️`);
+Estate atento para más novedades y quedate con nosotros que nos vamos a la LUNA ⚔️🚀🚀🚀⚔️`,{'disable_web_page_preview': true});
 });
 
 
@@ -275,14 +276,22 @@ https://www.reddit.com/r/ArenaSwap
 Canal de Telegram en Ingles
 https://t.me/arenaswap
 
-Información del Token $ARENA
-Contrato: 0x2a17dc11a1828725cdb318e0036acf12727d27a2
+Contrato $ARENA: 
+0x2a17dc11a1828725cdb318e0036acf12727d27a2
 
-Información del Token $PYRAM
-Contrato: 0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+💰 Compra $ARENA
+
+<a href="https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2">CLICK ACÁ PARA COMPRAR $ARENA 🔥</a>
+
+Contrato $PYRAM:
+0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+
+💰 Compra $PYRAM
+
+<a href="https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">CLICK ACÁ PARA COMPRAR $PYRAM 🔥</a>
 
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
-¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`);
+¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`,{'disable_web_page_preview': true});
 });
 
 //Cron 2
@@ -300,7 +309,7 @@ https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
 
 Seguinos, dejanos un like  y retweet  🔥⬆️
 
-https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`);
+https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`,{'disable_web_page_preview': true});
 });
 
 //Cron 3
@@ -321,7 +330,7 @@ Por lo tanto, tendremos un total de 12 ganadores!!
 ⚔️⚔️⚔️⚔️ Entra en la Arena AHORA ⚔️⚔️⚔️⚔️
 
 arenaswap.com
-`);
+`,{'disable_web_page_preview': true});
 });
 
 module.exports = bot;
