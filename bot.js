@@ -21,23 +21,32 @@ bot.on('message', (msg) => {
 });
 
 
-//Contrato
+//Contrato ARENA
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
+    var texto = '';
+    if(message.includes('compro') || message.includes('comprar')){
+      texto = 'Para comprar el token: '
+    }
+
     if(message.includes('contrato') || message.includes('contract')){
+      texto = 'Te dejo el contrato del token: '
+    }
+
+    if((message.includes('compro') || message.includes('comprar') || (message.includes('contrato') || message.includes('contract')) && (message.includes('cual') || message.includes('como'))) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
-      `${name}, te dejamos la información del token:
-
-Binance Smart Chain (BSC)
-
+      `${texto}
+      
 Contrato $ARENA: 
 0x2a17dc11a1828725cdb318e0036acf12727d27a2
 
-Contrato $PYRAM:
-0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+💰 Compra $ARENA
+
+https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2
+
+Binance Smart Chain (BSC)
 
 `).then(() => {
         // reply sent!
@@ -47,17 +56,69 @@ Contrato $PYRAM:
 
 });
 
-// Chart
+//Contrato PYRAM
+bot.on('message', (msg) => {
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+    var texto = '';
+    if(message.includes('compro') || message.includes('comprar')){
+      texto = 'Para comprar el token: '
+    }
+
+    if(message.includes('contrato') || message.includes('contract')){
+      texto = 'Te dejo el contrato del token: '
+    }
+
+    if((message.includes('compro') || message.includes('comprar') || (message.includes('contrato') || message.includes('contract')) && (message.includes('cual') || message.includes('como'))) && message.includes('pyram')){
+      bot.sendMessage(msg.chat.id, 
+      `${texto}
+
+Contrato $PYRAM:
+0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+
+💰 Compra $PYRAM
+
+https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B
+
+Binance Smart Chain (BSC)
+
+`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+
+});
+
+
+// Chart ARENA
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if(message.includes('chart') || message.includes('grafico')){
+    if((message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
       bot.sendMessage(msg.chat.id, 
-      `${name}, acá podes ver el chart de $ARENA
+      `Chart de $ARENA 🚀🚀🚀
 
 https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
+// Chart PYRAM
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if((message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
+      bot.sendMessage(msg.chat.id, 
+      `Chart de $PYRAM 🚀🚀🚀
+
+https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`).then(() => {
         // reply sent!
       });
     }
@@ -120,6 +181,21 @@ bot.on('message', (msg) => {
     if( (message.includes('como') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) ) || (message.includes('hacer') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) )){
       bot.sendMessage(msg.chat.id, 
       `Te dejo un video para aprender a hacer staking con Arena https://youtu.be/kudDB72Y6BM`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
+// Farm PYRAM
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if( (message.includes('pyram') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) ) || (message.includes('cuando') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) )){
+      bot.sendMessage(msg.chat.id, 
+      `Cuenta regresiva para la farm de $PYRAM: https://bscscan.com/block/countdown/9582560`).then(() => {
         // reply sent!
       });
     }
@@ -219,12 +295,33 @@ https://www.coingecko.com/en/coins/arena-token?utm_medium=telegram&utm_source=Ar
 Vota por ArenaSwap 🔥⬆️
 https://coinsniper.net/coin/5626?utm_medium=telegram&utm_source=ArenaSwapES
 
-Seguinos, Comenta  y vota  🔥⬆️✅
+Seguinos, Comenta  y vota  🔥⬆️
 https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
 
 Seguinos, dejanos un like  y retweet  🔥⬆️
 
 https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`);
+});
+
+//Cron 3
+cron.schedule('40 0-23/3 * * *', () => {
+  bot.sendMessage(chatID, `🔥🔥 CONCURSO LP $ARENA-$PYRAM 🔥🔥
+
+Para entrar en el concurso, se necesita holdear un mínimo de $250USD de tokens LP del par $ARENA-$PYRAM. 
+ 
+Por cada $250 de LP, se obtiene 1 entrada adicional. 
+Por ej: $2k de lp = 8 entradas. 
+ 
+Buscamos satisfacer a los miembros de nuestra comunidad. Así que encontramos una solución que permite a todos conseguir 3 NFTs de armas legendarias! (este NFT será único, es una gran oportunidad). 
+ 
+A estos 3 NFTs legendarios, añadimos 9 NFTs super raros para otros 9 farmers del par ARENA-PYRAM. Estos 9 NFTs también son armas utilizables in-game (3 hachas + 3 lanzas + 3 espadas). 
+ 
+Por lo tanto, tendremos un total de 12 ganadores!! 
+
+⚔️⚔️⚔️⚔️ Entra en la Arena AHORA ⚔️⚔️⚔️⚔️
+
+arenaswap.com
+`);
 });
 
 module.exports = bot;
