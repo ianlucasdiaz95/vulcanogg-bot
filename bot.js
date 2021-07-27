@@ -328,9 +328,9 @@ arenaswap.com
 });
 
 //Cron 4
-cron.schedule('40 0-23/1 * * *', () => {
+cron.schedule('22 0-23/1 * * *', () => {
   bot.sendMessage(chatID, `Gente necesitamos el votos de todos aqui
-  
+
   https://coinsniper.net/coin/9630 
   
   si PYRAM sube entonces ARENA sube! 🚀
