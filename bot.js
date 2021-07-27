@@ -295,6 +295,9 @@ https://www.coingecko.com/en/coins/arena-token?utm_medium=telegram&utm_source=Ar
 Vota por ArenaSwap 🔥⬆️
 https://coinsniper.net/coin/5626?utm_medium=telegram&utm_source=ArenaSwapES
 
+Vota por PYRAM 🔥⬆️
+https://coinsniper.net/coin/9630?utm_medium=telegram&utm_source=ArenaSwapES
+
 Seguinos, Comenta  y vota  🔥⬆️
 https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
 
