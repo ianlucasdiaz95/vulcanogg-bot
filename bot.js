@@ -169,7 +169,7 @@ bot.on('message', (msg) => {
       `$PYRAM es el token que se utiliza para el juego Pyramid Royale.
       
 Canal de Telegram Oficial $PYRAM
-https://t.me/ArenaSwapPyramid`).then(() => {
+https://t.me/ArenaSwapPyramid`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -327,4 +327,4 @@ arenaswap.com
 module.exports = bot;
 
 
-///set_message@Poocoin_Pricebot <a href="https://arenaswap.com">Compra ARENA en ArenaSwap Oficial</a> | <a href="https://www.reddit.com/r/arenaswap/">Reddit</a> | <a href="https://twitter.com/arenaswap">Twitter Oficial</a> | <a href="https://t.me/arenaswap">Telegram INGLES</a>
+///set_message@Poocoin_Pricebot ⚔️ Querés el precio de PYRAM? Hace click en el link debajo <a href="https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Ver precio PYRAM</a>
