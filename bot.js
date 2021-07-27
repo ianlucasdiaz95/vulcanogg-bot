@@ -166,7 +166,10 @@ bot.on('message', (msg) => {
 
     if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
-      `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`).then(() => {
+      `$PYRAM es el token que se utiliza para el juego Pyramid Royale.
+      
+Canal de Telegram Oficial $PYRAM
+https://t.me/ArenaSwapPyramid`).then(() => {
         // reply sent!
       });
     }
@@ -237,9 +240,7 @@ bot.on('message', (msg) => {
 cron.schedule('35 0-23/2 * * *', () => {
   bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto. 
 
-  Les vamos avisando a medida que tengamos más novedades.
-
-  ⚔️🚀🚀🚀⚔️ ARENASWAP OFICIAL ESPAÑOL ⚔️🚀🚀🚀⚔️`,{'disable_web_page_preview': true});
+Les vamos avisando a medida que tengamos más novedades.`,{'disable_web_page_preview': true});
 });
 
 
@@ -262,6 +263,9 @@ https://www.reddit.com/r/ArenaSwap
 
 Canal de Telegram en Ingles
 https://t.me/arenaswap
+
+Canal de Telegram Oficial $PYRAM
+https://t.me/ArenaSwapPyramid
 
 Contrato $ARENA: 
 0x2a17dc11a1828725cdb318e0036acf12727d27a2
