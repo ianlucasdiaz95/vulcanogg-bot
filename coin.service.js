@@ -30,7 +30,7 @@ class CoinService{
       coinData = {
         symbol: coin.symbol.toUpperCase(),
         price: market_data.current_price.usd.toLocaleString('de-DE'),
-        change_24: (Math.round(market_data.price_change_percentage_24h * 100) / 100).toLocaleString('de-DE'),
+        change_24: (Math.round(market_data.price_change_percentage_24h).toLocaleString('de-DE'),
         total_supply: market_data.total_supply.toLocaleString('de-DE'),
         max_supply: market_data.max_supply ? market_data.max_supply.toLocaleString('de-DE') : '-',
         market_cap: market_data.fully_diluted_valuation.usd ? market_data.fully_diluted_valuation.usd.toLocaleString('de-DE') : '-',
