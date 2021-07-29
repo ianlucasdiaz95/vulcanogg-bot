@@ -181,7 +181,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('us')))){
+    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') && message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
       `$ARENA es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
         // reply sent!
@@ -196,7 +196,7 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('us')))){
+    if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') && message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
       `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
@@ -226,12 +226,12 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if( (message.includes('pyram') && message.includes('farm') && (message.includes('cuando') || message.includes('cuanto') || message.includes('falta')))){
+    /*if( (message.includes('pyram') && message.includes('farm') && (message.includes('cuando') || message.includes('cuanto') || message.includes('falta')))){
       bot.sendMessage(msg.chat.id, 
-      `Cuenta regresiva para la farm de $PYRAM: https://bscscan.com/block/countdown/9582560`,{'disable_web_page_preview': true}).then(() => {
+      `Ya esta abierto el farm/stake de $PYRAM, pone a trabajar tus monedas en arenaswap.com`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
-    }
+    }*/
   }
 });
 
@@ -245,16 +245,17 @@ bot.on('message', (msg) => {
       bot.sendMessage(msg.chat.id, 
       `¿Qué es el impermanent loss?
 
-El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP (Impermanent Loss),como su nombre lo índica la misma es inpermanente esto quiere decir qué solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
+El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP.
+Impermanent loss,como su nombre lo índica la misma es inpermanente esto quiere decir qué solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
 de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
 
 Cambio de precio.        Perdida
 
-X1.5.                     2%
-X2.                       5.7%
-X3.                       13.4%
-X4.                       20%
-X5.                       25.5%`,{'disable_web_page_preview': true}).then(() => {
+X1.5.                           2%
+X2.                             5.7%
+X3.                             13.4%
+X4.                             20%
+X5.                             25.5%`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -428,18 +429,5 @@ X5.                       25.5%
 });
 
 module.exports = bot;
-
-/*
-para los que esta en stake LP consideren la perdida inpermanente, como su nombre lo índica la misma es inpermanente osea que solo se aplica cuando haces tu retiro, aquí les dejo mi calculo aproximado en caso de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake :
-
-Cambio de precio.        Perdida
-
-X1.5.                     2%
-X2.                       5.7%
-X3.                       13.4%
-X4.                       20%
-X5.                       25.5%
-*/
-
 
 ///set_message@Poocoin_Pricebot ⚔️ Querés el precio de PYRAM? Hace click en el link debajo <a href="https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Ver precio PYRAM</a>
