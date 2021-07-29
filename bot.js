@@ -1,8 +1,8 @@
 const CoinService = require('./coin.service');
 const token = process.env.TOKEN || '1751039035:AAFALSaB5XB_SkYzCXYztM_YUMWFUxsCZGY';
 var cron = require('node-cron');
-//var chatID = '-1001518577650';
-var chatID = '1872721997'
+var chatID = '-1001518577650';
+//var chatID = '1872721997'
 const Bot = require('node-telegram-bot-api');
 let bot;
 
