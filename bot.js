@@ -1,9 +1,12 @@
+const CoinService = require('./coin.service');
 const token = process.env.TOKEN || '1751039035:AAFALSaB5XB_SkYzCXYztM_YUMWFUxsCZGY';
 var cron = require('node-cron');
-var chatID = '-1001518577650';
-//var chatID = '1872721997'
+//var chatID = '-1001518577650';
+var chatID = '1872721997'
 const Bot = require('node-telegram-bot-api');
 let bot;
+
+var coinService = new CoinService();
 
 if(process.env.NODE_ENV === 'production') {
   bot = new Bot(token);
@@ -18,6 +21,37 @@ console.log('Bot server started in the ' + process.env.NODE_ENV + ' mode');
 //Log
 bot.on('message', (msg) => {
   console.log(msg);
+});
+
+//Comandos
+
+bot.onText(/^\/price/, function(msg){
+    var chatId = chatID;
+    
+    bot.sendMessage(chatId, `¿Qué precio necesitas?
+
+⚔️⚔️ Precio ARENA:
+
+/precio_arena ➡
+
+🔥🔥 Precio PYRAM:
+
+/precio_pyram ➡
+
+Selecciona uno para ver su precio
+`);
+});
+
+bot.onText(/^\/precio_arena/, async function(msg){
+    var chatId = chatID;
+    var coinInfo = await coinService.parseCoinInfo('arena-token')
+    bot.sendMessage(chatId, coinInfo, {parse_mode : "HTML"});
+});
+
+bot.onText(/^\/precio_pyram/, async function(msg){
+    var chatId = chatID;
+    var coinInfo = await coinService.parseCoinInfo('pyram-token')
+    bot.sendMessage(chatId, coinInfo, {parse_mode : "HTML"});
 });
 
 
@@ -134,9 +168,7 @@ bot.on('message', (msg) => {
 
     if(message.includes('lanzamiento') || ( message.includes('cuando') && message.includes('sale')) || ( message.includes('estreno') && message.includes('juego'))){
       bot.sendMessage(msg.chat.id, 
-      `${name}, Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto. 
-
-  Les vamos avisando a medida que tengamos más novedades.`).then(() => {
+      `${name}, Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`).then(() => {
         // reply sent!
       });
     }
@@ -166,10 +198,7 @@ bot.on('message', (msg) => {
 
     if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('us')))){
       bot.sendMessage(msg.chat.id, 
-      `$PYRAM es el token que se utiliza para el juego Pyramid Royale.
-      
-Canal de Telegram Oficial $PYRAM
-https://t.me/ArenaSwapPyramid`,{'disable_web_page_preview': true}).then(() => {
+      `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -197,9 +226,35 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if( (message.includes('pyram') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) ) || (message.includes('cuando') && (message.includes('farm') || message.includes('farming') || message.includes('farmear')) )){
+    if( (message.includes('pyram') && message.includes('farm') && (message.includes('cuando') || message.includes('cuanto') || message.includes('falta')))){
       bot.sendMessage(msg.chat.id, 
       `Cuenta regresiva para la farm de $PYRAM: https://bscscan.com/block/countdown/9582560`,{'disable_web_page_preview': true}).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
+// Impermanent loss
+bot.on('message', (msg) => {
+  const name = msg.from.first_name;
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    if( message.includes('impermanent') && message.includes('loss') && message.includes('?')){
+      bot.sendMessage(msg.chat.id, 
+      `¿Qué es el impermanent loss?
+
+El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP (Impermanent Loss),como su nombre lo índica la misma es inpermanente esto quiere decir qué solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
+de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
+
+Cambio de precio.        Perdida
+
+X1.5.                     2%
+X2.                       5.7%
+X3.                       13.4%
+X4.                       20%
+X5.                       25.5%`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -222,7 +277,7 @@ bot.on('message', (msg) => {
           // reply sent!
         });
     } else if (messageNumber == 3) {
-        let messageText = `Bienvenido/a ${name}, cualquier duda que tengas te respondemos con gusto 😄`;
+        let messageText = `Bienvenido/a ${name}, estamos para ayudarte 😄`;
         bot.sendMessage(chatID, messageText).then(() => {
           // reply sent!
         });
@@ -238,14 +293,12 @@ bot.on('message', (msg) => {
 
 // Cron 1
 cron.schedule('35 0-23/2 * * *', () => {
-  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto. 
-
-Les vamos avisando a medida que tengamos más novedades.`,{'disable_web_page_preview': true});
+  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`,{'disable_web_page_preview': true});
 });
 
 
 //Cron 2
-cron.schedule('1 * * * *', () => {
+cron.schedule('1 */2 * * *', () => {
   bot.sendMessage(chatID, `Web Oficial ArenaSwap
 https://arenaswap.com/
 
@@ -298,6 +351,12 @@ https://coinsniper.net/coin/5626?utm_medium=telegram&utm_source=ArenaSwapES
 Vota por PYRAM 🔥⬆️
 https://coinsniper.net/coin/9630?utm_medium=telegram&utm_source=ArenaSwapES
 
+Votanos en CMC 🔥⬆️
+PYRAM
+https://coinmarketcap.com/currencies/pyram-token/?utm_medium=telegram&utm_source=ArenaSwapES
+ARENA
+https://coinmarketcap.com/currencies/arena-token/?utm_medium=telegram&utm_source=ArenaSwapES
+
 Seguinos, Comenta  y vota  🔥⬆️
 https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
 
@@ -321,7 +380,7 @@ A estos 3 NFTs legendarios, añadimos 9 NFTs super raros para otros 9 farmers de
  
 Por lo tanto, tendremos un total de 12 ganadores!! 
 
-⚔️⚔️⚔️⚔️ Entra en la Arena AHORA ⚔️⚔️⚔️⚔️
+⚔️ Entra en la Arena AHORA ⚔️
 
 arenaswap.com
 `,{'disable_web_page_preview': true});
@@ -331,13 +390,56 @@ arenaswap.com
 cron.schedule('22 0-23/1 * * *', () => {
   bot.sendMessage(chatID, `Gente necesitamos el votos de todos aqui
 
-  https://coinsniper.net/coin/9630 
+https://coinsniper.net/coin/9630 
   
-  si PYRAM sube entonces ARENA sube! 🚀
+si PYRAM sube entonces ARENA sube! 🚀
+`,{'disable_web_page_preview': true});
+});
+
+//Cron 4
+cron.schedule('43 0-23/3 * * *', () => {
+  bot.sendMessage(chatID, `Ya estamos listados en CoinMarketCap! 🚀
+
+Dejanos tu estrellita para que seamos trend 🔥⬆️
+
+1. Ir a https://coinmarketcap.com/currencies/pyram-token/
+2. Click ⭐ y votanos 👍
+
+1. Ir a https://coinmarketcap.com/currencies/arena-token/
+2. Click ⭐ y votanos 👍
+
+`,{'disable_web_page_preview': true});
+});
+
+//Cron 6
+cron.schedule('43 0-23/10 * * *', () => {
+  bot.sendMessage(chatID, `Para los que estan en stake LP consideren la perdida inpermanent
+(Impermanent Loss), solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
+de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
+
+Cambio de precio.        Perdida
+
+X1.5.                     2%
+X2.                       5.7%
+X3.                       13.4%
+X4.                       20%
+X5.                       25.5%
 `,{'disable_web_page_preview': true});
 });
 
 module.exports = bot;
+
+/*
+para los que esta en stake LP consideren la perdida inpermanente, como su nombre lo índica la misma es inpermanente osea que solo se aplica cuando haces tu retiro, aquí les dejo mi calculo aproximado en caso de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake :
+
+Cambio de precio.        Perdida
+
+X1.5.                     2%
+X2.                       5.7%
+X3.                       13.4%
+X4.                       20%
+X5.                       25.5%
+*/
 
 
 ///set_message@Poocoin_Pricebot ⚔️ Querés el precio de PYRAM? Hace click en el link debajo <a href="https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Ver precio PYRAM</a>
