@@ -27,10 +27,11 @@ class CoinService{
     let chartUrl = '';
     if(coin){
       market_data = coin.market_data;
+      console.log(market_data);
       coinData = {
         symbol: coin.symbol.toUpperCase(),
         price: market_data.current_price.usd.toLocaleString('de-DE'),
-        change_24: Math.round(market_data.price_change_percentage_24h).toLocaleString('de-DE'),
+        change_24: market_data.price_change_percentage_24h_in_currency.usd.toLocaleString('de-DE'),
         total_supply: market_data.total_supply.toLocaleString('de-DE'),
         max_supply: market_data.max_supply ? market_data.max_supply.toLocaleString('de-DE') : '-',
         market_cap: market_data.fully_diluted_valuation.usd ? market_data.fully_diluted_valuation.usd.toLocaleString('de-DE') : '-',
@@ -53,7 +54,7 @@ class CoinService{
 Precio: <b>$ ${coinData.price}</b>
 High 24hs: <b>$ ${coinData.high_24}</b>
 Low 24hs: <b>$ ${coinData.low_24}</b>
-Variación 24hs: <b>${coinData.price}%</b>
+Variación 24hs: <b>${coinData.change_24}%</b>
 Vol 24hs: <b>$ ${coinData.volume_24h}</b>
 Market Cap: <b>$ ${coinData.market_cap}</b>
 Max Supply: <b>$ ${coinData.max_supply}</b>

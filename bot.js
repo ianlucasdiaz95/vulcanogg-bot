@@ -20,13 +20,13 @@ console.log('Bot server started in the ' + process.env.NODE_ENV + ' mode');
 
 //Log
 bot.on('message', (msg) => {
-  console.log(msg);
+  //console.log(msg);
 });
 
 //Comandos
 
 bot.onText(/^\/price/, function(msg){
-    var chatId = chatID;
+    var chatId = msg.chat.id;
     
     bot.sendMessage(chatId, `¿Qué precio necesitas?
 
@@ -43,13 +43,13 @@ Selecciona uno para ver su precio
 });
 
 bot.onText(/^\/precio_arena/, async function(msg){
-    var chatId = chatID;
+    var chatId = msg.chat.id;
     var coinInfo = await coinService.parseCoinInfo('arena-token')
     bot.sendMessage(chatId, coinInfo, {parse_mode : "HTML"});
 });
 
 bot.onText(/^\/precio_pyram/, async function(msg){
-    var chatId = chatID;
+    var chatId = msg.chat.id;
     var coinInfo = await coinService.parseCoinInfo('pyram-token')
     bot.sendMessage(chatId, coinInfo, {parse_mode : "HTML"});
 });
