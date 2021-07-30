@@ -248,7 +248,7 @@ bot.on('message', (msg) => {
 
     let extra = '';
 
-    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') && message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('uso') || message.includes('usa')))){
+    if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') || message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('uso') || message.includes('usa')))){
       bot.sendMessage(msg.chat.id, 
       `$ARENA es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
         
