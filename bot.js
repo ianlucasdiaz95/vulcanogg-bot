@@ -20,7 +20,7 @@ else {
 console.log('Bot server started in the ' + process.env.NODE_ENV + ' mode');
 
 function messageValidate(message){
-  const minchar = 100;
+  const minchar = 130;
 
 
   if(message.length >= minchar){
