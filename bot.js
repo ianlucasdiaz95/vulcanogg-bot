@@ -353,8 +353,10 @@ Vota por PYRAM 🔥⬆️
 https://coinsniper.net/coin/9630?utm_medium=telegram&utm_source=ArenaSwapES
 
 Votanos en CMC 🔥⬆️
+
 PYRAM
 https://coinmarketcap.com/currencies/pyram-token/?utm_medium=telegram&utm_source=ArenaSwapES
+
 ARENA
 https://coinmarketcap.com/currencies/arena-token/?utm_medium=telegram&utm_source=ArenaSwapES
 
@@ -368,20 +370,21 @@ https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`,{'disa
 
 //Cron 3
 cron.schedule('40 0-23/3 * * *', () => {
-  bot.sendMessage(chatID, `🔥🔥 CONCURSO LP $ARENA-$PYRAM 🔥🔥
+  bot.sendMessage(chatID, `⭐️ NOTICIAS DE MARKETING ⭐️
 
-Para entrar en el concurso, se necesita holdear un mínimo de $250USD de tokens LP del par $ARENA-$PYRAM. 
- 
-Por cada $250 de LP, se obtiene 1 entrada adicional. 
-Por ej: $2k de lp = 8 entradas. 
- 
-Buscamos satisfacer a los miembros de nuestra comunidad. Así que encontramos una solución que permite a todos conseguir 3 NFTs de armas legendarias! (este NFT será único, es una gran oportunidad). 
- 
-A estos 3 NFTs legendarios, añadimos 9 NFTs super raros para otros 9 farmers del par ARENA-PYRAM. Estos 9 NFTs también son armas utilizables in-game (3 hachas + 3 lanzas + 3 espadas). 
- 
-Por lo tanto, tendremos un total de 12 ganadores!! 
+- Se encontró un acuerdo con 2 Youtubers para realizar Reviews de ArenaSwap. Una hoy y otra máximo mañana.
 
-⚔️ Entra en la Arena AHORA ⚔️
+- Se está entrevistando a 2 MarketMakers para trabajar para ArenaSwap. Ambos brindan servicios completos de market boost para facilitar el listado en Exchanges.
+
+- Mañana habra un Voice Chat a la mañana!! Y se presentará al nuevo Marketing Manager para encarar grandes proyectos.
+
+- Se están analizando partnership para luego del lanzamiento del juego. Y una de ella es con una plataforma con 330m$ de TVL, creo que saben cual es!!
+
+- Se están negociando nuevos listados (Kucoin, Bitmart, gate.io, etc)
+
+- Es posible que hoy Apeboard nos liste, no está confirmado. Se están negociando algunos aspectos tecnicos.
+
+Seguimos creciendo! 🚀🚀🚀
 
 arenaswap.com
 `,{'disable_web_page_preview': true});
@@ -398,7 +401,7 @@ si PYRAM sube entonces ARENA sube! 🚀
 });
 
 //Cron 4
-cron.schedule('43 0-23/3 * * *', () => {
+cron.schedule('55 0-23/3 * * *', () => {
   bot.sendMessage(chatID, `Ya estamos listados en CoinMarketCap! 🚀
 
 Dejanos tu estrellita para que seamos trend 🔥⬆️
@@ -413,7 +416,7 @@ Dejanos tu estrellita para que seamos trend 🔥⬆️
 });
 
 //Cron 6
-cron.schedule('43 0-23/10 * * *', () => {
+cron.schedule('34 0-23/10 * * *', () => {
   bot.sendMessage(chatID, `Para los que estan en stake LP consideren la perdida inpermanent
 (Impermanent Loss), solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
 de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
