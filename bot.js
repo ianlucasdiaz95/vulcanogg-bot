@@ -6,6 +6,7 @@ var chatID = '-1001518577650';
 const Bot = require('node-telegram-bot-api');
 let bot;
 
+
 var coinService = new CoinService();
 
 if(process.env.NODE_ENV === 'production') {
@@ -17,6 +18,17 @@ else {
 }
 
 console.log('Bot server started in the ' + process.env.NODE_ENV + ' mode');
+
+function messageValidate(message){
+  const minchar = 100;
+
+
+  if(message.length >= minchar){
+    return false;
+  }
+
+  return true;
+}
 
 //Log
 bot.on('message', (msg) => {
@@ -58,7 +70,13 @@ bot.onText(/^\/precio_pyram/, async function(msg){
 //Contrato ARENA
 bot.on('message', (msg) => {
   if('text' in msg){
-    const message = msg.text.toLowerCase();
+    
+     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     var texto = '';
     if(message.includes('compro') || message.includes('compra')){
@@ -94,7 +112,14 @@ Binance Smart Chain (BSC)
 //Contrato PYRAM
 bot.on('message', (msg) => {
   if('text' in msg){
+
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
+
     var texto = '';
     if(message.includes('compro') || message.includes('compra')){
       texto = 'Para comprar el token: '
@@ -128,9 +153,14 @@ Binance Smart Chain (BSC)
 
 // Chart ARENA
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
   if('text' in msg){
+
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     if(((message.includes('precio') && message.includes('?')) || message.includes('chart') || message.includes('grafico')) && message.includes('arena')){
       bot.sendMessage(msg.chat.id,
@@ -145,9 +175,14 @@ https://charts.bogged.finance/0x2A17Dc11a1828725cdB318E0036ACF12727d27a2`, {'dis
 
 // Chart PYRAM
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
   if('text' in msg){
+
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     if(((message.includes('precio') && message.includes('?')) || message.includes('chart') || message.includes('grafico')) && message.includes('pyram')){
       bot.sendMessage(msg.chat.id, 
@@ -166,39 +201,65 @@ bot.on('message', (msg) => {
   if('text' in msg){
     const message = msg.text.toLowerCase();
 
-    if(message.includes('lanzamiento') || ( message.includes('cuando') && message.includes('sale')) || ( message.includes('estreno') && message.includes('juego'))){
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
+
+    if(message.includes('lanza') || ( message.includes('cuando') && message.includes('sal')) || ( message.includes('estreno') && message.includes('juego'))){
       bot.sendMessage(msg.chat.id, 
-      `${name}, Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`).then(() => {
+      `${name}, los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`).then(() => {
         // reply sent!
       });
     }
   }
 });
 
-// Utilidad Arena
+// Minimo para jugar
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
   if('text' in msg){
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
+
+    if((message.includes('minimo') && (message.includes('jugar') || message.includes('empezar') || message.includes('comenzar')) ) || ( message.includes('cuanto') || message.includes('necesito') && (message.includes('jugar') || message.includes('juego')))){
+      bot.sendMessage(msg.chat.id, 
+      `${name}, el minimo para jugar todavía no fue revelado, eso lo vamos a saber bien una vez este funcionando el juego. Lo que si esta confirmado es que se necesitaran ambas monedas.`).then(() => {
+        // reply sent!
+      });
+    }
+  }
+});
+
+// Utilidad Arena & Pyram
+bot.on('message', (msg) => {
+  
+  if('text' in msg){
+    const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
+
+    let extra = '';
 
     if((message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('arena'))) || ( (message.includes('token') && message.includes('arena')) && message.includes('para') && message.includes('sirve')) || ( message.includes('token') && (message.includes('utilidad') || message.includes('uso') || message.includes('usa')))){
       bot.sendMessage(msg.chat.id, 
       `$ARENA es el token nativo de ArenaSwap utilizado para farmear el resto de tokens, comprar NFTs (equipamiento, personajes, etc) y como recompensa.`).then(() => {
-        // reply sent!
+        // Si sale ARENA cargo el mensaje para PYRAM
+        extra = 'Ambas monedas son complementarias entre si y se necesitaran para jugar.'
       });
     }
-  }
-});
 
-// Utilidad Pyram
-bot.on('message', (msg) => {
-  const name = msg.from.first_name;
-  if('text' in msg){
-    const message = msg.text.toLowerCase();
-
+    //Utilidad PYRAM
     if( (message.includes('diferencia') && message.includes('pyram') && message.includes('arena')) || (message.includes('sirve') && message.includes('pyram')) || ((message.includes('utilidad') || message.includes('us')) && (message.includes('token') || message.includes('pyram'))) || ( (message.includes('token') || message.includes('pyram')) && message.includes('para') && message.includes('sirve')) || ( message.includes('pyram') && (message.includes('utilidad') || message.includes('uso') || message.includes('usa')))){
       bot.sendMessage(msg.chat.id, 
-      `$PYRAM es el token que se utiliza para el juego Pyramid Royale.`,{'disable_web_page_preview': true}).then(() => {
+      `$PYRAM es el token que se utiliza para el juego Pyramid Royale. ${extra}`,{'disable_web_page_preview': true}).then(() => {
         // reply sent!
       });
     }
@@ -207,9 +268,14 @@ bot.on('message', (msg) => {
 
 // Staking
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
+  
   if('text' in msg){
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     if( (message.includes('como') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) ) || (message.includes('hacer') && (message.includes('staking') || message.includes('stake') || message.includes('stakear')) )){
       bot.sendMessage(msg.chat.id, 
@@ -222,9 +288,14 @@ bot.on('message', (msg) => {
 
 // Farm PYRAM
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
+ 
   if('text' in msg){
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     /*if( (message.includes('pyram') && message.includes('farm') && (message.includes('cuando') || message.includes('cuanto') || message.includes('falta')))){
       bot.sendMessage(msg.chat.id, 
@@ -237,9 +308,14 @@ bot.on('message', (msg) => {
 
 // Impermanent loss
 bot.on('message', (msg) => {
-  const name = msg.from.first_name;
+  
   if('text' in msg){
     const message = msg.text.toLowerCase();
+
+    //Valido el mensaje
+    if(!messageValidate(message)){
+      return;
+    }
 
     if( message.includes('impermanent') && message.includes('loss') && message.includes('?')){
       bot.sendMessage(msg.chat.id, 
@@ -294,12 +370,14 @@ bot.on('message', (msg) => {
 
 // Cron 1
 cron.schedule('35 0-23/2 * * *', () => {
-  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`,{'disable_web_page_preview': true});
+  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.
+  
+Horario a confirmar.`,{'disable_web_page_preview': true});
 });
 
 
 //Cron 2
-cron.schedule('1 */2 * * *', () => {
+cron.schedule('1 */4 * * *', () => {
   bot.sendMessage(chatID, `Web Oficial ArenaSwap
 https://arenaswap.com/
 
@@ -340,7 +418,7 @@ Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar c
 });
 console.log(new Date());
 //Cron 2
-cron.schedule('20 0-23/10 * * *', () => {
+cron.schedule('0 14 * * *', () => {
   bot.sendMessage(chatID, `✅* Tareas diarias de la comunidad *✅
 
 Entra en CoinGecko y hace un Scroll y algunos clicks para mostrar que hay tráfico🔥⬆️
@@ -369,7 +447,7 @@ https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`,{'disa
 });
 
 //Cron 3
-cron.schedule('40 0-23/3 * * *', () => {
+/*cron.schedule('40 0-23/3 * * *', () => {
   bot.sendMessage(chatID, `⭐️ NOTICIAS DE MARKETING ⭐️
 
 - Se encontró un acuerdo con 2 Youtubers para realizar Reviews de ArenaSwap. Una hoy y otra máximo mañana.
@@ -388,17 +466,7 @@ Seguimos creciendo! 🚀🚀🚀
 
 arenaswap.com
 `,{'disable_web_page_preview': true});
-});
-
-//Cron 4
-cron.schedule('22 0-23/1 * * *', () => {
-  bot.sendMessage(chatID, `Gente necesitamos el votos de todos aqui
-
-https://coinsniper.net/coin/9630 
-  
-si PYRAM sube entonces ARENA sube! 🚀
-`,{'disable_web_page_preview': true});
-});
+});*/
 
 //Cron 4
 cron.schedule('55 0-23/3 * * *', () => {
@@ -417,9 +485,11 @@ Dejanos tu estrellita para que seamos trend 🔥⬆️
 
 //Cron 6
 cron.schedule('34 0-23/10 * * *', () => {
-  bot.sendMessage(chatID, `Para los que estan en stake LP consideren la perdida inpermanent
-(Impermanent Loss), solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
-de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
+  bot.sendMessage(chatID, `Para los que estan en stake LP consideren la perdida impermanente
+(Impermanent Loss).
+
+La misma solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
+de necesitarlo recuerden que esto aplica para cualquiera de las dos monedas que tengan en su LP:
 
 Cambio de precio.        Perdida
 

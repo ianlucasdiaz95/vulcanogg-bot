@@ -27,7 +27,6 @@ class CoinService{
     let chartUrl = '';
     if(coin){
       market_data = coin.market_data;
-      console.log(market_data);
       coinData = {
         symbol: coin.symbol.toUpperCase(),
         price: market_data.current_price.usd.toLocaleString('de-DE'),
