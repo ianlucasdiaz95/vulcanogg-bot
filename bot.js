@@ -338,9 +338,9 @@ Contrato $PYRAM:
 Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar como HOLDERS. 
 ¡Es importante para la estabilidad de la moneda y el crecimiento del proyecto!`,{parse_mode : "HTML", 'disable_web_page_preview': true});
 });
-
+console.log(new Date());
 //Cron 2
-cron.schedule('20 0-23/8 * * *', () => {
+cron.schedule('20 0-23/10 * * *', () => {
   bot.sendMessage(chatID, `✅* Tareas diarias de la comunidad *✅
 
 Entra en CoinGecko y hace un Scroll y algunos clicks para mostrar que hay tráfico🔥⬆️
