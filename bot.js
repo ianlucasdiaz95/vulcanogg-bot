@@ -226,7 +226,7 @@ bot.on('message', (msg) => {
       return;
     }
 
-    if((message.includes('minimo') && (message.includes('jugar') || message.includes('empezar') || message.includes('comenzar')) ) || ( message.includes('cuanto') || message.includes('necesito') && (message.includes('jugar') || message.includes('juego')))){
+    if(((message.includes('minimo') || (message.includes('cuanto')) && (message.includes('jugar') || message.includes('empezar') || message.includes('comenzar')) ) || ( message.includes('cuanto') || message.includes('necesito') && (message.includes('jugar') || message.includes('juego'))))){
       bot.sendMessage(msg.chat.id, 
       `${name}, el minimo para jugar todavía no fue revelado, eso lo vamos a saber bien una vez este funcionando el juego. Lo que si esta confirmado es que se necesitaran ambas monedas.`).then(() => {
         // reply sent!
