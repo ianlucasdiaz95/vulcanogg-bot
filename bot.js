@@ -411,7 +411,9 @@ bot.on('message', (msg) => {
 
     if( message.includes('impermanent') && message.includes('loss') && message.includes('?')){
       bot.sendMessage(msg.chat.id, 
-      `¿Qué es el impermanent loss?
+      `💸💸 IMPERMANENT LOSS 💸💸
+
+¿Qué es el impermanent loss?
 
 El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP.
 Como su nombre lo índica la misma es impermanente esto quiere decir qué solo se aplica cuando haces tu retiro. Debajo se encuentra el calculo aproximado de perdida impermanente esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
@@ -537,28 +539,6 @@ Seguinos, dejanos un like  y retweet  🔥⬆️
 https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`,{'disable_web_page_preview': true});
 });
 
-//Cron 3
-/*cron.schedule('40 0-23/3 * * *', () => {
-  bot.sendMessage(chatID, `⭐️ NOTICIAS DE MARKETING ⭐️
-
-- Se encontró un acuerdo con 2 Youtubers para realizar Reviews de ArenaSwap. Una hoy y otra máximo mañana.
-
-- Se está entrevistando a 2 MarketMakers para trabajar para ArenaSwap. Ambos brindan servicios completos de market boost para facilitar el listado en Exchanges.
-
-- Mañana habra un Voice Chat a la mañana!! Y se presentará al nuevo Marketing Manager para encarar grandes proyectos.
-
-- Se están analizando partnership para luego del lanzamiento del juego. Y una de ella es con una plataforma con 330m$ de TVL, creo que saben cual es!!
-
-- Se están negociando nuevos listados (Kucoin, Bitmart, gate.io, etc)
-
-- Es posible que hoy Apeboard nos liste, no está confirmado. Se están negociando algunos aspectos tecnicos.
-
-Seguimos creciendo! 🚀🚀🚀
-
-arenaswap.com
-`,{'disable_web_page_preview': true});
-});*/
-
 //Cron 4
 cron.schedule('55 0-23/3 * * *', () => {
   bot.sendMessage(chatID, `Ya estamos listados en CoinMarketCap! 🚀
@@ -571,24 +551,6 @@ Dejanos tu estrellita para que seamos trend 🔥⬆️
 1. Ir a https://coinmarketcap.com/currencies/arena-token/
 2. Click ⭐ y votanos 👍
 
-`,{'disable_web_page_preview': true});
-});
-
-//Cron 6
-cron.schedule('34 0-23/10 * * *', () => {
-  bot.sendMessage(chatID, `Para los que estan en stake LP consideren la perdida impermanente
-(Impermanent Loss).
-
-La misma solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
-de necesitarlo recuerden que esto aplica para cualquiera de las dos monedas que tengan en su LP:
-
-Cambio de precio.        Perdida
-
-X1.5.                     2%
-X2.                       5.7%
-X3.                       13.4%
-X4.                       20%
-X5.                       25.5%
 `,{'disable_web_page_preview': true});
 });
 
