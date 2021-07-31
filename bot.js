@@ -186,7 +186,7 @@ Contrato $ARENA:
 
 💰 Compra $ARENA
 
-<a href="https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2">Hace click acá para ir al exchange✅</a>
+<a href="https://exchange.arenaswap.com/#/swap?outputCurrency=0x2A17Dc11a1828725cdB318E0036ACF12727d27a2">Hace click acá para comprar✅</a>
 
 
 Binance Smart Chain (BSC)
@@ -228,7 +228,7 @@ Contrato $PYRAM:
 
 💰 Compra $PYRAM
 
-<a href="https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Hace click acá para ir al exchange✅</a>
+<a href="https://pancakeswap.finance/swap?outputCurrency=0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Hace click acá para comprar✅</a>
 
 Binance Smart Chain (BSC)
 
