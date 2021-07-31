@@ -37,6 +37,7 @@ bot.on('message', (msg) => {
 
 //Comandos
 
+// ** Precios
 bot.onText(/^\/price/, function(msg){
     var chatId = msg.chat.id;
     
@@ -66,6 +67,95 @@ bot.onText(/^\/precio_pyram/, async function(msg){
     bot.sendMessage(chatId, coinInfo, {parse_mode : "HTML"});
 });
 
+// ** Wiki
+
+bot.onText(/^\/wiki/, function(msg){
+    var chatId = msg.chat.id;
+    
+    bot.sendMessage(chatId, `⚔️ WIKI DE LA COMUNIDAD ⚔️
+
+¿Qué es el impermanent loss? ¿Cómo funciona? 💸💸
+
+/impermanent_loss ➡
+
+¿Qué es un Timelock? ⌛🔒 Evita rug pulls!!
+
+/timelock ➡
+
+¿Qué es el MasterChef smart contract? 👨‍🍳🧠
+
+/masterchef ➡
+
+La importancia de los audits (auditorias de código) 🕵️‍♂️✅
+
+/audits ➡
+
+
+<code>Una colaboración de toda la comunidad de ArenaSwap Español
+para ayudarnos entre todos.</code>
+`,{parse_mode : "HTML", 'disable_web_page_preview': true});
+});
+
+// ** Wiki - Impermanent Loss
+
+bot.onText(/^\/impermanent_loss/, function(msg){
+    var chatId = msg.chat.id;
+    
+    bot.sendMessage(chatId, `💸💸 IMPERMANENT LOSS 💸💸
+
+¿Qué es el impermanent loss?
+
+El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP.
+Como su nombre lo índica la misma es impermanente esto quiere decir qué solo se aplica cuando haces tu retiro. Debajo se encuentra el calculo aproximado de perdida impermanente esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
+
+Cambio de precio.        Perdida
+
+X1.5.                           2%
+X2.                             5.7%
+X3.                             13.4%
+X4.                             20%
+X5.                             25.5%`,{parse_mode : "HTML", 'disable_web_page_preview': true});
+});
+
+// ** Wiki - Timelock
+
+bot.onText(/^\/timelock/, function(msg){
+    var chatId = msg.chat.id;
+    
+    bot.sendMessage(chatId, ` 🔒⌛ TIMELOCKS ⌛🔒
+
+Un Timelock es una pieza de código que permite bloquear ciertas funcionalidades de los contratos por un tiempo determinado. Es una medida anti-robo (rug pull) muy importante. 
+Cualquier sea el cambio que un desarrollador quiera realizar al código de un contrato, éste deberá esperar el tiempo predeterminado (generalmente 12 horas) para impactar y mientras tanto se puede observar de forma pública, es decir, que se provee a los usuarios de 12 horas para realizar cualquier acción que crea necesaria (como retirar sus fondos).
+
+Podés leer más acerca de los timelocks <b><a href="https://wiki.rugdoc.io/docs/timelocks-explained/">acá ➡</a></b>
+`,{parse_mode : "HTML", 'disable_web_page_preview': true});
+});
+
+// ** Wiki - Masterchef
+
+bot.onText(/^\/masterchef/, function(msg){
+    var chatId = msg.chat.id;
+    
+    bot.sendMessage(chatId, ` 🧠👨‍🍳 MASTERCHEF SMART CONTRACT 👨‍🍳🧠
+
+Un Masterchef es un smart contract utilizado para supervisar tokens y sus yield farms. Su código es el que ejecuta todas las operaciones de los desarrolladores. Por ejemplo, un masterchef puede ser el responsabe de emitir y quemar tokens. Es muy importante leerlo cuidadosamente porque también es donde se podria encontrar código malicioso.
+
+Podés leer más acerca de los MasterChef <b><a href="https://wiki.rugdoc.io/docs/how-to-find-a-masterchef-contract/">acá ➡</a></b>
+`,{parse_mode : "HTML", 'disable_web_page_preview': true});
+});
+
+// ** Wiki - Masterchef
+
+bot.onText(/^\/audits/, function(msg){
+    var chatId = msg.chat.id;
+    
+    bot.sendMessage(chatId, ` 🕵️‍♂️ AUDITS 🕵️‍♂️
+
+Un audit o auditoria es un análisis exhaustivo y metódico del código de un smart contract. Este análisis tiene como objetivo encontrar errores, potenciales problemas y vulnerabilidades de seguridad externas, como así también, sugerir soluciones y correcciones. Es una medida de seguridad extremadamente importante y para grandes proyectos se sugieren más de uno de parte de reconocidos grupos de seguridad.
+
+Podés leer más acerca de las auditorías de código <b><a href="https://wiki.rugdoc.io/docs/rugdoc-reviews-vs-smart-contract-audits/">acá ➡</a></b>
+`,{parse_mode : "HTML", 'disable_web_page_preview': true});
+});
 
 //Contrato ARENA
 bot.on('message', (msg) => {
@@ -324,8 +414,7 @@ bot.on('message', (msg) => {
       `¿Qué es el impermanent loss?
 
 El impermanent loss sucede por la fluctuación de precio entre las dos monedas de tu LP.
-Impermanent loss,como su nombre lo índica la misma es inpermanente esto quiere decir qué solo se aplica cuando haces tu retiro, les dejamos un calculo aproximado en caso
-de necesitarlo acuerden se esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
+Como su nombre lo índica la misma es impermanente esto quiere decir qué solo se aplica cuando haces tu retiro. Debajo se encuentra el calculo aproximado de perdida impermanente esto aplica para cualquier movimiento o fluctuación de las monedas en stake:
 
 Cambio de precio.        Perdida
 
@@ -505,4 +594,11 @@ X5.                       25.5%
 
 module.exports = bot;
 
-///set_message@Poocoin_Pricebot ⚔️ Querés el precio de PYRAM? Hace click en el link debajo <a href="https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B">Ver precio PYRAM</a>
+/* Comandos
+price - Muestra los precios de las monedas
+precio_arena - Muestra el precio de $ARENA
+precio_pyram - Muestra el precio de $PYRAM
+wiki - Wiki de la comunidad con preguntas y dudas frecuentes
+
+*/
+
