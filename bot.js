@@ -285,26 +285,6 @@ https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`,{'disa
   }
 });
 
-// Lanzamiento
-bot.on('message', (msg) => {
-  const name = msg.from.first_name;
-  if('text' in msg){
-    const message = msg.text.toLowerCase();
-
-    //Valido el mensaje
-    if(!messageValidate(message)){
-      return;
-    }
-
-    if(message.includes('lanza') || ( message.includes('cuando') && message.includes('sal')) || ( message.includes('estreno') && message.includes('juego'))){
-      bot.sendMessage(msg.chat.id, 
-      `${name}, los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.`).then(() => {
-        // reply sent!
-      });
-    }
-  }
-});
-
 // Minimo para jugar
 bot.on('message', (msg) => {
   const name = msg.from.first_name;
@@ -459,13 +439,6 @@ bot.on('message', (msg) => {
     }
   }
   
-});
-
-// Cron 1
-cron.schedule('35 0-23/2 * * *', () => {
-  bot.sendMessage(chatID, `Los desarolladores estimaron la salida de Pyramid Royale para el domingo 1 de Agosto.
-  
-Horario a confirmar.`,{'disable_web_page_preview': true});
 });
 
 
