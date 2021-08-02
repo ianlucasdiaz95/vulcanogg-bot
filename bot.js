@@ -285,25 +285,6 @@ https://charts.bogged.finance/0xedeCfB4801C04F3EB394b89397c6Aafa4ADDa15B`,{'disa
   }
 });
 
-// Minimo para jugar
-bot.on('message', (msg) => {
-  const name = msg.from.first_name;
-  if('text' in msg){
-    const message = msg.text.toLowerCase();
-
-    //Valido el mensaje
-    if(!messageValidate(message)){
-      return;
-    }
-
-    if(((message.includes('minimo') || (message.includes('cuanto')) && (message.includes('jugar') || message.includes('empezar') || message.includes('comenzar')) ) || ( message.includes('cuanto') || message.includes('necesito') && (message.includes('jugar') || message.includes('juego'))))){
-      bot.sendMessage(msg.chat.id, 
-      `${name}, el minimo para jugar todavía no fue revelado, eso lo vamos a saber bien una vez este funcionando el juego. Lo que si esta confirmado es que se necesitaran ambas monedas.`).then(() => {
-        // reply sent!
-      });
-    }
-  }
-});
 
 // Utilidad Arena & Pyram
 bot.on('message', (msg) => {
