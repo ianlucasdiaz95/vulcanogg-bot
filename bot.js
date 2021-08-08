@@ -418,6 +418,10 @@ bot.on('message', (msg) => {
           // reply sent!
         });
     }
+
+    bot.sendMessage(chatID, `Antes de hacer alguna consulta, recorda leer los mensajes fijados, todas las noticias de ArenaSwap se encuentra ahí.`,[], true).then(() => {
+      // reply sent!
+    });
   }
   
 });
