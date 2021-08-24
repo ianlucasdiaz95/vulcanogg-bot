@@ -428,7 +428,7 @@ bot.on('message', (msg) => {
 
 
 //Cron 2
-cron.schedule('1 */4 * * *', () => {
+cron.schedule('1 */10 * * *', () => {
   bot.sendMessage(chatID, `Web Oficial ArenaSwap
 https://arenaswap.com/
 
@@ -469,7 +469,7 @@ Recuerden mantener un 0,001 de ARENA en su Wallet si hacen staking para contar c
 });
 console.log(new Date());
 //Cron 2
-cron.schedule('0 14 * * *', () => {
+/*cron.schedule('0 14 * * *', () => {
   bot.sendMessage(chatID, `✅* Tareas diarias de la comunidad *✅
 
 Entra en CoinGecko y hace un Scroll y algunos clicks para mostrar que hay tráfico🔥⬆️
@@ -495,11 +495,11 @@ https://www.reddit.com/r/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES
 Seguinos, dejanos un like  y retweet  🔥⬆️
 
 https://twitter.com/arenaswap?utm_medium=telegram&utm_source=ArenaSwapES`,{'disable_web_page_preview': true});
-});
+});*/
 
 //Cron 4
-cron.schedule('55 0-23/3 * * *', () => {
-  bot.sendMessage(chatID, `Ya estamos listados en CoinMarketCap! 🚀
+cron.schedule('55 */12 * * *', () => {
+  bot.sendMessage(chatID, `Ayudanos a ganar popularidad en CoinMarketCap! 🚀
 
 Dejanos tu estrellita para que seamos trend 🔥⬆️
 
