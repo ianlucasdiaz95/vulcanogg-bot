@@ -37,7 +37,23 @@ class Bot {
 
                 this.bot.onText(new RegExp('/'+command.command), async (msg, match) => {
 
-                    await this.bot.sendMessage(msg.chat.id, command.response);
+                    if(command.image != undefined){
+
+                        await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response});
+
+                    }else if(command.video != undefined){
+                            
+                            await this.bot.sendVideo(msg.chat.id, command.video, {caption: command.response});
+    
+                    }else if (command.animation){
+
+                        await this.bot.sendAnimation(msg.chat.id, command.animation, {caption: command.response});
+                                  
+                    }else{
+                            
+                            await this.bot.sendMessage(msg.chat.id, command.response);
+    
+                    }
 
                     if(command.audio != undefined){
                         this.bot.sendVoice(msg.chat.id, command.audio);
