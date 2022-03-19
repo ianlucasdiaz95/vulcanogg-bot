@@ -8,7 +8,7 @@ class CronService {
     }
 
     cron() {
-        console.log('cron started');
+        //console.log('cron started');
     }
 }
 
