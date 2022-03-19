@@ -13,7 +13,7 @@ class BotEN extends Bot {
                 description: 'Information about me',
                 response: `I'm the eldest son of the Great Alpha. I always carry the Dark Sword, a gift from my father.`,
                 image: process.env.URL + '/assets/images/en/dark-aster.jpg',
-                audio: process.env.URL + '/assets/audio/en/dark-aster-en.ogg'
+                audio: process.env.URL + '/assets/audio/en/dark-aster-en.opus'
             },
             {
                 command: 'token',
