@@ -11,36 +11,71 @@ class BotEN extends Bot {
             {
                 command: 'info',
                 description: 'Information about me',
-                response: `I'm the eldest son of the Great Alpha. I always carry the Dark Sword, a gift from my father.`,
+                response: data => `I'm the eldest son of the Great Alpha. I always carry the Dark Sword, a gift from my father.`,
                 image: process.env.URL + '/assets/images/en/dark-aster.jpg',
-            },
-            {
-                command: 'token',
-                description: 'Information about Vulcano Token',
-                response: 'Vulcano Token is a token that can be used to buy in the Vulcano ecosystem.'
             },
             {
                 command: 'contract',
                 description: 'Information about Vulcano Token Contract',
-                response: 'Vulcano Token is a token that can be used to buy in the Vulcano ecosystem.'
+                response: data => 'Vulcano Token is not yet released, please stay tuned for further information.'
             },
             {
                 command: 'website',
-                description: 'Vulcano Official Website URL',
-                response: 'Vulcano Token is a token that can be used to buy in the Vulcano ecosystem.'
+                description: 'Vulcano Official Websites information.',
+                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                options : {
+                    parse_mode : "HTML",
+                    reply_markup: JSON.stringify({
+                        inline_keyboard: [
+                        [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
+                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
+                        [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                        [{ text: `🤝 Partnership Program`, url:'https://docs.google.com/forms/d/e/1FAIpQLSfMucGEAH2X2bQwBozdd9MqXk9B2NOT0C7cGhSBsr8kvK1YWQ/viewform' }],
+                        ]
+                    })
+                }
             },
             {
                 command: 'communities',
                 description: 'Vulcano Official Communities across the globe',
-                response: 'Vulcano Token is a token that can be used to buy in the Vulcano ecosystem.'
+                response: data => `<strong>🌍 Vulcano Official Communities 🌍</strong>`,
+                options : {
+                    parse_mode : "HTML",
+                    reply_markup: JSON.stringify({
+                        inline_keyboard: [
+                        [{ text: `🇺🇸 English Main Community`, url:'https://t.me/VULCANO_En_Group' }],
+                        [{ text: `🇪🇸 Spanish Community`, url:'https://t.me/VULCANO_Grupo_Es' }],
+                        [{ text: `🇧🇷 Portuguese Community`, url:'https://t.me/Vulcano_PT' }],
+                        [{ text: `🇨🇳 Chinese Community`, url:'https://t.me/Vulcano_VN' }],
+                        [{ text: `🇰🇷 Korean Community`, url:'https://t.me/vulcanokr' }],
+                        [{ text: `🇻🇳 Vietnamese Community`, url:'https://t.me/VulcanoChina' }],
+                        [{ text: `🇵🇭 Filipino Community`, url:'https://t.me/vulcanoph' }],
+                        [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
+                        [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
+                        ]
+                    })
+                }
+                
+            },
+            {
+                command: 'price',
+                description: '$VULC Token Price Ticker',
+                custom: true
             }
-        ]
 
-        console.log(this.commands);
+        ];
+
+        this.welcome = (name) => {
+            return `Hello ${name}! Welcome to the universe of Vulcano!`;
+        }
 
         this.setCommands();
 
         this.listenCommands();
+
+        this.welcomeMessage();
+
+        this.priceCommand();
         
     }
 }

@@ -1,26 +1,28 @@
+require('dotenv').config();
+
 const TelegramBot = require('node-telegram-bot-api');
+
+const CoinService = require('../../services/coin.service');
 
 class Bot {
     constructor(config) {
 
         this.config = config
 
-        this.commands = [];
-
         this.bot = new TelegramBot(config.token, {polling: true});
 
         this.bot.on("polling_error", (err) => console.log(err));
+
+        this.coinService = new CoinService();
         
     }
 
     async setCommands() {
         try {
 
-             await this.bot.setMyCommands(this.commands);
+            await this.bot.setMyCommands(this.commands);
 
-             let commands = await this.bot.getMyCommands();
-
-             console.log(commands);
+            await this.bot.getMyCommands();
 
         } catch (error) {
 
@@ -31,27 +33,31 @@ class Bot {
 
     async listenCommands(){
 
-        for(let command of this.commands){
+        const commands = this.commands.filter(command => command.custom != true);
 
+        for(let command of commands){
+            
             try {
 
                 this.bot.onText(new RegExp('/'+command.command), async (msg, match) => {
 
                     if(command.image != undefined){
 
-                        await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response});
+                        await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response(msg)});
 
                     }else if(command.video != undefined){
                             
-                            await this.bot.sendVideo(msg.chat.id, command.video, {caption: command.response});
+                        await this.bot.sendVideo(msg.chat.id, command.video, {caption: command.response(msg)});
     
-                    }else if (command.animation){
+                    }else if (command.animation != undefined){
 
-                        await this.bot.sendAnimation(msg.chat.id, command.animation, {caption: command.response});
-                                  
+                        await this.bot.sendAnimation(msg.chat.id, command.animation, {caption: command.response(msg)});
+
                     }else{
                             
-                            await this.bot.sendMessage(msg.chat.id, command.response);
+                        await this.bot.sendMessage(msg.chat.id, command.response(msg), command.options);
+
+                        console.log(msg);
     
                     }
 
@@ -69,6 +75,48 @@ class Bot {
 
         }
 
+    }
+
+    async welcomeMessage(){
+        this.bot.on('message', function(msg){
+    
+            var chatId = msg.chat.id;
+            
+            if (msg.new_chat_members != undefined){
+            
+                var nameNewMember = msg.new_chat_member.first_name;
+            
+                this.bot.sendMessage(chatId, this.welcome(nameNewMember));
+            }
+
+        });
+    }
+
+    async priceCommand(){
+
+        try {
+            
+            this.bot.onText(new RegExp('/price'), async (msg, match) => {
+
+                console.log('its.me');
+                var coinInfo = await this.coinService.parseCoinInfo('bitcoin');
+                console.log(coinInfo);
+                this.bot.sendMessage(msg.chat.id, coinInfo, {
+                    'disable_web_page_preview': true,
+                    parse_mode : "HTML",
+                    reply_markup: JSON.stringify({
+                        inline_keyboard: [
+                        [{ text: `💰 Swap $VULC`, url:'https://vulcano.gg' }],
+                        [{ text: `📈 $VULC Chart`, url:'https://vulcano.gg' }],
+                        ]
+                    })
+                });
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async banCommand(){

@@ -1,4 +1,4 @@
-const CoinService = require('./coin.service');
+const CoinService = require('./services/coin.service');
 const token = process.env.TOKEN || '1751039035:AAFALSaB5XB_SkYzCXYztM_YUMWFUxsCZGY';
 var cron = require('node-cron');
 var chatID = '-1001518577650';
