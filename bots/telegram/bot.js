@@ -98,9 +98,7 @@ class Bot {
             
             this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
-                console.log('its.me');
                 var coinInfo = await this.coinService.parseCoinInfo('bitcoin');
-                console.log(coinInfo);
                 this.bot.sendMessage(msg.chat.id, coinInfo, {
                     'disable_web_page_preview': true,
                     parse_mode : "HTML",
