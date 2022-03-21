@@ -12,7 +12,7 @@ class BotEN extends Bot {
                 command: 'info',
                 description: 'Information about me',
                 response: data => `I'm the eldest son of the Great Alpha. I always carry the Dark Sword, a gift from my father.`,
-                image: process.env.URL + '/assets/images/en/dark-aster.jpg',
+                image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
                 command: 'contract',
@@ -30,7 +30,36 @@ class BotEN extends Bot {
                         [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
                         [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
                         [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
-                        [{ text: `🤝 Partnership Program`, url:'https://docs.google.com/forms/d/e/1FAIpQLSfMucGEAH2X2bQwBozdd9MqXk9B2NOT0C7cGhSBsr8kvK1YWQ/viewform' }],
+                        ]
+                    })
+                }
+            },
+            {
+                command: 'whitepaper',
+                description: 'Vulcano Official Whitepaper information.',
+                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                options : {
+                    parse_mode : "HTML",
+                    reply_markup: JSON.stringify({
+                        inline_keyboard: [
+                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
+                        [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
+                        [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                        ]
+                    })
+                }
+            },
+            {
+                command: 'roadmap',
+                description: 'Vulcano Official Roadmap information.',
+                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                options : {
+                    parse_mode : "HTML",
+                    reply_markup: JSON.stringify({
+                        inline_keyboard: [
+                        [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                        [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
+                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
                         ]
                     })
                 }
