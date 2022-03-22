@@ -105,6 +105,8 @@ class Bot {
         this.bot.on('message', (msg) => {
     
             var chatId = msg.chat.id;
+
+            console.log(msg);
             
             if (msg.new_chat_members != undefined){
             
