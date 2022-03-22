@@ -102,7 +102,7 @@ class Bot {
     }
 
     async welcomeMessage(){
-        this.bot.on('message', (msg) => {
+        this.bot.on('new_chat_members', (msg) => {
     
             var chatId = msg.chat.id;
 
