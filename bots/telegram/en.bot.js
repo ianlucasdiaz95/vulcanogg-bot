@@ -11,7 +11,7 @@ class BotEN extends Bot {
             {
                 command: 'info',
                 description: 'Information about me',
-                response: data => `Genderless. A mechanical race, made up of androids created on Vulcan I.`,
+                response: data => `I'm Keppler. Genderless. From a mechanical race made up of androids created on Vulcan I.`,
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
@@ -83,11 +83,11 @@ class BotEN extends Bot {
                 }
                 
             },
-            {
+            /*{
                 command: 'price',
                 description: '$VULC Token Price Ticker',
                 custom: true
-            }
+            }*/
 
         ];
 
@@ -115,7 +115,7 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
 
         this.welcomeMessage();
 
-        this.priceCommand();
+        //this.priceCommand();
         
     }
 }
