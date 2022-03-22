@@ -22,14 +22,13 @@ class BotEN extends Bot {
             {
                 command: 'website',
                 description: 'Vulcano Official Websites information.',
-                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                response: data => '<strong>Visit our website here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
                         inline_keyboard: [
                         [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
-                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
-                        [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' },{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
                         ]
                     })
                 }
@@ -37,14 +36,13 @@ class BotEN extends Bot {
             {
                 command: 'whitepaper',
                 description: 'Vulcano Official Whitepaper information.',
-                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                response: data => '<strong>Check out our Whitepaper here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
                         inline_keyboard: [
                         [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
-                        [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
-                        [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                        [{ text: `🌐 Website`, url:'https://vulcano.gg' },{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
                         ]
                     })
                 }
@@ -52,14 +50,13 @@ class BotEN extends Bot {
             {
                 command: 'roadmap',
                 description: 'Vulcano Official Roadmap information.',
-                response: data => '<strong>🔗 Vulcano Official Website and Links 🔗</strong>',
+                response: data => '<strong>Access our roadmap here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
                         inline_keyboard: [
                         [{ text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
-                        [{ text: `🌐 Website`, url:'https://vulcano.gg' }],
-                        [{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
+                        [{ text: `🌐 Website`, url:'https://vulcano.gg' },{ text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }],
                         ]
                     })
                 }
@@ -94,8 +91,22 @@ class BotEN extends Bot {
 
         ];
 
-        this.welcome = (name) => {
-            return `Hello ${name}! Welcome to the universe of Vulcano!`;
+        this.welcome = {
+            message: (name) => {
+                return `Hello ${name}! Welcome to the metaverse of Vulcano 🔥🔥
+
+Follow the links below to learn more about Vulcano and what it has to offer.`;
+            },
+            options: {
+                parse_mode : "HTML",
+                reply_markup: JSON.stringify({
+                    inline_keyboard: [
+                    [{ text: `🌐 Website`, url:'https://vulcano.gg' }, { text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }, { text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
+                    [{ text: `💪 Our team`, url:'https://www.vulcano.gg/team' }, { text: `🤝 Partners`, url:'https://www.vulcano.gg/#partners' }],
+                    [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }, { text: `🔵 Twitter`, url:'https://twitter.com/Vulcano_Game' }],
+                    ]
+                })
+            }
         }
 
         this.setCommands();

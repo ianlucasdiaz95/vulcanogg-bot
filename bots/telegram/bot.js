@@ -7,7 +7,9 @@ const CoinService = require('../../services/coin.service');
 class Bot {
     constructor(config) {
 
-        this.config = config
+        this.config = config;
+
+        this.deleteTime = 30 * 1000;
 
         this.bot = new TelegramBot(config.token, {polling: true});
 
@@ -41,28 +43,48 @@ class Bot {
 
                 this.bot.onText(new RegExp('/'+command.command), async (msg, match) => {
 
+                    this.deleteMessage(msg.chat.id, msg.message_id, 0);
+
                     if(command.image != undefined){
 
-                        await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response(msg)});
+                        await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response(msg)}).then((result) => {
+                                
+                                this.deleteMessage(msg.chat.id, result.message_id);
+                                
+                        });
 
                     }else if(command.video != undefined){
                             
-                        await this.bot.sendVideo(msg.chat.id, command.video, {caption: command.response(msg)});
+                        await this.bot.sendVideo(msg.chat.id, command.video, {caption: command.response(msg)}).then((result) => {
+                                
+                                this.deleteMessage(msg.chat.id, result.message_id);
+                                
+                        });
     
                     }else if (command.animation != undefined){
 
-                        await this.bot.sendAnimation(msg.chat.id, command.animation, {caption: command.response(msg)});
+                        await this.bot.sendAnimation(msg.chat.id, command.animation, {caption: command.response(msg)}).then((result) => {
+                                
+                                this.deleteMessage(msg.chat.id, result.message_id);
+                                
+                        });
 
                     }else{
                             
-                        await this.bot.sendMessage(msg.chat.id, command.response(msg), command.options);
-
-                        console.log(msg);
+                        await this.bot.sendMessage(msg.chat.id, command.response(msg), command.options).then((result) => {
+                                
+                                this.deleteMessage(msg.chat.id, result.message_id);
+                                
+                        });
     
                     }
 
                     if(command.audio != undefined){
-                        this.bot.sendVoice(msg.chat.id, command.audio);
+                        this.bot.sendVoice(msg.chat.id, command.audio).then((result) => {
+                                
+                                this.deleteMessage(msg.chat.id, result.message_id);
+                                
+                        });
                     }
 
                 });
@@ -78,7 +100,7 @@ class Bot {
     }
 
     async welcomeMessage(){
-        this.bot.on('message', function(msg){
+        this.bot.on('message', (msg) => {
     
             var chatId = msg.chat.id;
             
@@ -86,7 +108,11 @@ class Bot {
             
                 var nameNewMember = msg.new_chat_member.first_name;
             
-                this.bot.sendMessage(chatId, this.welcome(nameNewMember));
+                this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then((result) => {
+                    
+                    this.deleteMessage(chatId, result.message_id);
+
+                });
             }
 
         });
@@ -98,6 +124,8 @@ class Bot {
             
             this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
+                this.deleteMessage(msg.chat.id, msg.message_id, 0);
+
                 var coinInfo = await this.coinService.parseCoinInfo('bitcoin');
                 this.bot.sendMessage(msg.chat.id, coinInfo, {
                     'disable_web_page_preview': true,
@@ -108,6 +136,8 @@ class Bot {
                         [{ text: `📈 $VULC Chart`, url:'https://vulcano.gg' }],
                         ]
                     })
+                }).then((result) => {
+                    this.deleteMessage(msg.chat.id, result.message_id);
                 });
 
             });
@@ -115,6 +145,12 @@ class Bot {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    async deleteMessage(chatId, messageId, time = this.deleteTime){
+        setTimeout(() => {
+            this.bot.deleteMessage(chatId, messageId);
+        }, time);
     }
 
     async banCommand(){
