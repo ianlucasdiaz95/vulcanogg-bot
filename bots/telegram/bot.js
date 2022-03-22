@@ -115,7 +115,7 @@ class Bot {
                 
                     var nameNewMember = msg.new_chat_member.first_name;
                 
-                    this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then((result) => {
+                    this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then(async (result) => {
                         
                         await this.deleteMessage(chatId, result.message_id);
 
