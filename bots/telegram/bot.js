@@ -102,25 +102,31 @@ class Bot {
     }
 
     async welcomeMessage(){
-        this.bot.on('message', (msg) => {
-    
-            var chatId = msg.chat.id;
 
-            
-            if (msg.new_chat_members != undefined){
+        try {
+
+            this.bot.on('message', (msg) => {
+        
+                var chatId = msg.chat.id;
 
                 console.log(msg);
-            
-                var nameNewMember = msg.new_chat_member.first_name;
-            
-                this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then((result) => {
-                    
-                    this.deleteMessage(chatId, result.message_id);
 
-                });
-            }
+                if (msg.new_chat_members != undefined){
+                
+                    var nameNewMember = msg.new_chat_member.first_name;
+                
+                    this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then((result) => {
+                        
+                        await this.deleteMessage(chatId, result.message_id);
 
-        });
+                    });
+                }
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async priceCommand(){
