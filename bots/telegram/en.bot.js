@@ -11,7 +11,7 @@ class BotEN extends Bot {
             {
                 command: 'info',
                 description: 'Information about me',
-                response: data => `I'm the eldest son of the Great Alpha. I always carry the Dark Sword, a gift from my father.`,
+                response: data => `Genderless. A mechanical race, made up of androids created on Vulcan I.`,
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
