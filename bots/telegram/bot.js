@@ -18,14 +18,6 @@ class Bot {
         this.coinService = new CoinService();
 
         console.log(this.config.username + ' Online.');
-
-        //this.bot.getUpdates().then((updates) => console.log(updates, ' from getUpdates'))
-
-        this.bot.getUpdates({
-            limit: 100,
-            offset: 1,
-            allowed_updates: ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query', 'chosen_inline_result', 'callback_query', 'shipping_query', 'chat_member', 'chat_join_request']
-        }).then((updates) => console.log(updates,  ' from getUpdates2'))
         
     }
 
@@ -114,9 +106,10 @@ class Bot {
     
             var chatId = msg.chat.id;
 
-            console.log(msg);
             
             if (msg.new_chat_members != undefined){
+
+                console.log(msg);
             
                 var nameNewMember = msg.new_chat_member.first_name;
             
