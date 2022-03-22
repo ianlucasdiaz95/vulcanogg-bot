@@ -18,6 +18,12 @@ class Bot {
         this.coinService = new CoinService();
 
         console.log(this.config.username + ' Online.');
+
+        this.bot.getUpdates().then((updates) => console.log(updates, ' from getUpdates'))
+
+        this.bot.getUpdates({
+            allowed_updates: ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query', 'chosen_inline_result', 'callback_query', 'shipping_query', 'chat_member', 'chat_join_request']
+        }).then((updates) => console.log(updates,  ' from getUpdates2'))
         
     }
 
