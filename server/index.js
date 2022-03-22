@@ -13,7 +13,7 @@ class Server {
     constructor() {
         this.app  = express();
         this.port = process.env.PORT;
-        this.basePath = '/api/base';
+        this.webhookPath = '/api/webhook';
 
         // Conexión a la bae de datos
         //this.dbConnection();
@@ -50,7 +50,7 @@ class Server {
     }
 
     routes() {
-        this.app.use( this.basePath, require('../routes/base.route'));
+        this.app.use( this.webhookPath, require('../routes/webhook.route'));
     }
 
     crons() {
