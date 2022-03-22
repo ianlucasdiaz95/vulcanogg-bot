@@ -22,6 +22,8 @@ class Bot {
         //this.bot.getUpdates().then((updates) => console.log(updates, ' from getUpdates'))
 
         this.bot.getUpdates({
+            limit: 100,
+            offset: 1,
             allowed_updates: ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query', 'chosen_inline_result', 'callback_query', 'shipping_query', 'chat_member', 'chat_join_request']
         }).then((updates) => console.log(updates,  ' from getUpdates2'))
         
