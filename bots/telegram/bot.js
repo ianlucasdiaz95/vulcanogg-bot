@@ -16,6 +16,8 @@ class Bot {
         this.bot.on("polling_error", (err) => console.log(err));
 
         this.coinService = new CoinService();
+
+        console.log(this.config.username + ' Online.');
         
     }
 
