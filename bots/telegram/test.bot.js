@@ -10,18 +10,18 @@ class BotTEST extends Bot {
         this.commands = [
             {
                 command: 'info',
-                description: 'Information about me',
-                response: data => `I'm Keppler Test Bot. Genderless. From a mechanical race made up of androids created on Vulcan I.`,
+                description: 'Información sobre mi.',
+                response: data => `Soy Keppler. No tengo genero. Vengo de una raza mecánica de androides creados en Vulcan I.`,
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
-                command: 'contract',
-                description: 'Information about Vulcano Token Contract',
+                command: 'contrato',
+                description: 'Información sobre el contrato de $VULC.',
                 response: data => 'Vulcano Token is not yet released, please stay tuned for further information.'
             },
             {
                 command: 'website',
-                description: 'Vulcano Official Websites information.',
+                description: 'Informacion sobre nuestro sitio web.',
                 response: data => '<strong>Visit our website here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
@@ -35,7 +35,7 @@ class BotTEST extends Bot {
             },
             {
                 command: 'whitepaper',
-                description: 'Vulcano Official Whitepaper information.',
+                description: 'Informacion sobre nuestro whitepaper.',
                 response: data => '<strong>Check out our Whitepaper here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
@@ -49,7 +49,7 @@ class BotTEST extends Bot {
             },
             {
                 command: 'roadmap',
-                description: 'Vulcano Official Roadmap information.',
+                description: 'Informacion sobre nuestro roadmap.',
                 response: data => '<strong>Access our roadmap here 👇</strong>',
                 options : {
                     parse_mode : "HTML",
@@ -62,21 +62,22 @@ class BotTEST extends Bot {
                 }
             },
             {
-                command: 'communities',
-                description: 'Vulcano Official Communities across the globe',
+                command: 'comunidades',
+                description: 'Nuestras comunidades oficiales en todo el mundo.',
                 response: data => `<strong>🌍 Vulcano Official Communities 🌍</strong>`,
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
                         inline_keyboard: [
-                        [{ text: `🇺🇸 English Main Community`, url:'https://t.me/VULCANO_En_Group' }],
-                        [{ text: `🇪🇸 Spanish Community`, url:'https://t.me/VULCANO_Grupo_Es' }],
-                        [{ text: `🇧🇷 Portuguese Community`, url:'https://t.me/Vulcano_PT' }],
-                        [{ text: `🇨🇳 Chinese Community`, url:'https://t.me/Vulcano_VN' }],
-                        [{ text: `🇰🇷 Korean Community`, url:'https://t.me/vulcanokr' }],
-                        [{ text: `🇻🇳 Vietnamese Community`, url:'https://t.me/VulcanoChina' }],
-                        [{ text: `🇵🇭 Filipino Community`, url:'https://t.me/vulcanoph' }],
-                        [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
+                        [{ text: `🇺🇸 Comunidad Principal Ingles`, url:'https://t.me/VULCANO_En_Group' }],
+                        [{ text: `🇪🇸 Comunidad Español`, url:'https://t.me/VULCANO_Grupo_Es' }],
+                        [{ text: `🇧🇷 Comunidad Portugues`, url:'https://t.me/Vulcano_PT' }],
+                        [{ text: `🇯🇵 Comunidad Japón`, url:'https://t.me/vulcanojp' }],
+                        [{ text: `🇨🇳 Comunidad China`, url:'https://t.me/Vulcano_VN' }],
+                        [{ text: `🇰🇷 Comunidad Corea`, url:'https://t.me/vulcanokr' }],
+                        [{ text: `🇻🇳 Comunidad Vietnam`, url:'https://t.me/VulcanoChina' }],
+                        [{ text: `🇵🇭 Comunidad Filipinas`, url:'https://t.me/vulcanoph' }],
+                        [{ text: `🇹🇷 Comunidad Turquía`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })
@@ -93,9 +94,9 @@ class BotTEST extends Bot {
 
         this.welcome = {
             message: (name) => {
-                return `Hello ${name}! Welcome to the metaverse of Vulcano 🔥🔥
+                return `Hola ${name}! Bienvenido al metaverso de Vulcano 🔥🔥
 
-Follow the links below to learn more about Vulcano and what it has to offer.`;
+En los enlaces debajo te dejamos todos los links para obtener más información acerca de Vulcano.`;
             },
             options: {
                 parse_mode : "HTML",
@@ -104,9 +105,12 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
                     [{ text: `🌐 Website`, url:'https://vulcano.gg' }, { text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }, { text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
                     [{ text: `💪 Our team`, url:'https://www.vulcano.gg/team' }, { text: `🤝 Partners`, url:'https://www.vulcano.gg/#partners' }],
                     [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }, { text: `🔵 Twitter`, url:'https://twitter.com/Vulcano_Game' }],
+                    [{ text: '🔇 Click acá para empezar a escribir ✅', callback_data: 'unmute' }]
                     ]
                 })
-            }
+            },
+            mute: true,
+            muteText: 'Gracias, ya puedes escribir mensajes.'
         }
 
         this.setCommands();
@@ -115,8 +119,7 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
 
         this.welcomeMessage();
 
-        this.priceCommand();
-        
+        //this.priceCommand();        
     }
 }
 

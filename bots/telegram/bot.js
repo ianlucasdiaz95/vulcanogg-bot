@@ -22,9 +22,12 @@ class Bot {
     }
 
     async setCommands() {
+
+        const commands = this.commands.filter(command => command.hidden != true);
+
         try {
 
-            await this.bot.setMyCommands(this.commands);
+            await this.bot.setMyCommands(commands);
 
             await this.bot.getMyCommands();
 
@@ -53,7 +56,7 @@ class Bot {
                                 
                                 this.deleteMessage(msg.chat.id, result.message_id);
                                 
-                        });
+                        }).catch((error) => { console.log(error) });;
 
                     }else if(command.video != undefined){
                             
@@ -61,7 +64,7 @@ class Bot {
                                 
                                 this.deleteMessage(msg.chat.id, result.message_id);
                                 
-                        });
+                        }).catch((error) => { console.log(error) });;
     
                     }else if (command.animation != undefined){
 
@@ -69,7 +72,7 @@ class Bot {
                                 
                                 this.deleteMessage(msg.chat.id, result.message_id);
                                 
-                        });
+                        }).catch((error) => { console.log(error) });;
 
                     }else{
                             
@@ -77,7 +80,7 @@ class Bot {
                                 
                                 this.deleteMessage(msg.chat.id, result.message_id);
                                 
-                        });
+                        }).catch((error) => { console.log(error) });;
     
                     }
 
@@ -86,7 +89,7 @@ class Bot {
                                 
                                 this.deleteMessage(msg.chat.id, result.message_id);
                                 
-                        });
+                        }).catch((error) => { console.log(error) });;
                     }
 
                 });
@@ -109,17 +112,29 @@ class Bot {
         
                 var chatId = msg.chat.id;
 
-                console.log(msg);
-
                 if (msg.new_chat_members != undefined){
+
+                    // Mute person if it's what is expected
+                    if(this.welcome.mute != undefined && this.welcome.mute){
+                        this.bot.restrictChatMember(chatId, msg.new_chat_member.id, {
+                            can_send_messages: false,
+                        });
+
+                        //Escuchamos el click del botón
+                        this.welcomeUnmuteOnClick();
+                    }
                 
                     var nameNewMember = msg.new_chat_member.first_name;
                 
                     this.bot.sendMessage(chatId, this.welcome.message(nameNewMember), this.welcome.options).then(async (result) => {
-                        
-                        await this.deleteMessage(chatId, result.message_id);
 
-                    });
+                        if(this.welcome.mute == undefined || !this.welcome.mute){
+                            await this.deleteMessage(chatId, result.message_id);
+                        }else{
+                            await this.deleteMessage(chatId, result.message_id, 60 * 1000);
+                        }
+
+                    }).catch((error) => { console.log(error) });
                 }
 
             });
@@ -127,6 +142,23 @@ class Bot {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    async welcomeUnmuteOnClick(){
+        this.bot.on('callback_query', (callbackQuery) => {
+            const action = callbackQuery.data;
+            const user = callbackQuery.from;
+            const msg = callbackQuery.message;
+            
+            if (action === 'unmute') {
+                this.bot.answerCallbackQuery(callbackQuery.id, {text: this.welcome.muteText,show_alert: false});
+
+                this.bot.restrictChatMember(msg.chat.id, user.id, {
+                    can_send_messages: true,
+                }).catch((error) => { console.log(error) });
+            }
+
+        });
     }
 
     async priceCommand(){
@@ -149,7 +181,7 @@ class Bot {
                     })
                 }).then((result) => {
                     this.deleteMessage(msg.chat.id, result.message_id);
-                });
+                }).catch((error) => { console.log(error) });;
 
             });
 
