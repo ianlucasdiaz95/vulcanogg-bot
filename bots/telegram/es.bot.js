@@ -108,11 +108,32 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             muteText: 'Gracias, ya puedes escribir mensajes.'
         }
 
+        this.recurrentMessages = [
+            {
+                message: `<strong>🌋 V U L C A N O  🌋</strong>
+
+<i>Noticias de Vulcano</i>
+🤝 GameFi, GamesPad & BullPerk Partnerships
+🌟 Whitelist Abierta: <a href="https://bit.ly/3IixQJy">https://bit.ly/3IixQJy</a>
+🗓 IDO con fecha 31 de Marzo
+🛒 Marketplace a finales de Marzo
+
+<a href="http://www.vulcano.gg/">Website</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Anuncios</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>`,
+                options: {
+                    parse_mode : "HTML",
+                    'disable_web_page_preview': true
+                },
+                rule: '0 14 * * *',
+            }
+        ]
+
         this.setCommands();
 
         this.listenCommands();
 
         this.welcomeMessage();
+
+        this.scheduleMessages();
 
     }
 }

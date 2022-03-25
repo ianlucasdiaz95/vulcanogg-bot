@@ -74,9 +74,9 @@ class BotTEST extends Bot {
                         [{ text: `🇪🇸 Comunidad Español`, url:'https://t.me/VULCANO_Grupo_Es' }],
                         [{ text: `🇧🇷 Comunidad Portugues`, url:'https://t.me/Vulcano_PT' }],
                         [{ text: `🇯🇵 Comunidad Japón`, url:'https://t.me/vulcanojp' }],
-                        [{ text: `🇨🇳 Comunidad China`, url:'https://t.me/Vulcano_VN' }],
+                        [{ text: `🇨🇳 Comunidad China`, url:'https://t.me/VulcanoChina' }],
                         [{ text: `🇰🇷 Comunidad Corea`, url:'https://t.me/vulcanokr' }],
-                        [{ text: `🇻🇳 Comunidad Vietnam`, url:'https://t.me/VulcanoChina' }],
+                        [{ text: `🇻🇳 Comunidad Vietnam`, url:'https://t.me/Vulcano_VN' }],
                         [{ text: `🇵🇭 Comunidad Filipinas`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Comunidad Turquía`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
@@ -121,9 +121,9 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         this.recurrentMessages = [
             {
-                message: `🌋 V U L C A N O  🌋
+                message: `<strong>🌋 V U L C A N O  🌋</strong>
 
-Latest of Vulcano
+<i>Latest of Vulcano</i>
 🤝 GameFi, GamesPad & BullPerk Partnerships
 🌟 Whitelist Open: <a href="https://bit.ly/3IixQJy">https://bit.ly/3IixQJy</a>
 🗓 The IDO will be taking place 31st of March
@@ -134,7 +134,7 @@ Latest of Vulcano
                     parse_mode : "HTML",
                     'disable_web_page_preview': true
                 },
-                rule: '*/20 * * * * *',
+                rule: '37 10 * * *',
             }
         ]
 
@@ -146,7 +146,7 @@ Latest of Vulcano
 
         this.listenBannedWords();
 
-        //this.scheduleMessages();
+        this.scheduleMessages();
 
         //this.priceCommand();        
     }

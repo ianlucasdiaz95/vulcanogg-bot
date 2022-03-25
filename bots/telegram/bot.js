@@ -105,8 +105,6 @@ class Bot {
         try {
 
             this.bot.on('message', (msg) => {
-
-                console.log(msg);
         
                 var chatId = msg.chat.id;
 
@@ -188,8 +186,6 @@ class Bot {
     }
 
     async scheduleMessages(){
-
-        console.log(this.recurrentMessages);
 
         for(let recurrentMessage of this.recurrentMessages){
 
