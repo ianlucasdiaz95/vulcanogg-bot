@@ -119,6 +119,27 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             words: ['hi','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment'],
         }
 
+        this.recurrentMessages = [
+            {
+                message: `🌋 V U L C A N O  🌋
+
+Latest of Vulcano
+🤝 GameFi, GamesPad & BullPerk Partnerships
+🌟 Whitelist Open: <a href="https://bit.ly/3IixQJy">https://bit.ly/3IixQJy</a>
+🗓 The IDO will be taking place 31st of March
+🛒 Marketplace at the end of March
+
+<a href="http://www.vulcano.gg/">Website</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>
+
+Mi fecha y hora actual es ${new Date()}`,
+                options: {
+                    parse_mode : "HTML",
+                    'disable_web_page_preview': true
+                },
+                rule: '*/20 * * * * *',
+            }
+        ]
+
         this.setCommands();
 
         this.listenCommands();
@@ -126,6 +147,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
         this.welcomeMessage();
 
         this.listenBannedWords();
+
+        //this.scheduleMessages();
 
         //this.priceCommand();        
     }

@@ -4,6 +4,9 @@ const TelegramBot = require('node-telegram-bot-api');
 
 const CoinService = require('../../services/coin.service');
 
+const schedule = require('node-schedule');
+
+
 class Bot {
     constructor(config) {
 
@@ -17,7 +20,7 @@ class Bot {
 
         this.coinService = new CoinService();
 
-        console.log(this.config.username + ' Online.');
+        console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
     }
 
@@ -160,6 +163,8 @@ class Bot {
 
             this.bot.on('message', async (msg) => {
 
+                console.log(msg);
+
                 var chatId = msg.chat.id;
 
                 if(msg.text != undefined){
@@ -180,6 +185,31 @@ class Bot {
             console.log(error);
         }
 
+    }
+
+    async scheduleMessages(){
+
+        console.log(this.recurrentMessages);
+
+        for(let recurrentMessage of this.recurrentMessages){
+
+            let rule = recurrentMessage.rule;
+            let message = recurrentMessage.message;
+            let options = recurrentMessage.options;
+
+            schedule.scheduleJob(rule, () => {
+
+                try {
+                    this.bot.sendMessage(this.config.chat_id, message, options);
+                    
+                } catch (error) {
+                    console.log(error);
+                }
+                
+            });
+
+        }
+    
     }
 
     async priceCommand(){
