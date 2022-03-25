@@ -8,7 +8,7 @@ module.exports = {
     es: {
         username: '@KepplerESbot',
         token: '5140388995:AAGh_GeJq22zM1P_J2GCN3eS1fN_ykwu-rk',
-        chat_id: '-1639283067',
+        chat_id: '-1001639283067',
     },
     test: {
         username: '@VulcanoTEST_bot',
