@@ -105,6 +105,8 @@ class Bot {
         try {
 
             this.bot.on('message', (msg) => {
+
+                console.log(msg);
         
                 var chatId = msg.chat.id;
 
@@ -162,8 +164,6 @@ class Bot {
         try {
 
             this.bot.on('message', async (msg) => {
-
-                console.log(msg);
 
                 var chatId = msg.chat.id;
 
