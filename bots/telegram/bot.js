@@ -6,6 +6,11 @@ const CoinService = require('../../services/coin.service');
 
 const schedule = require('node-schedule');
 
+const TwitterService = require('../../services/twitter.service');
+
+const { ETwitterStreamEvent } = require('twitter-api-v2');
+const { stripAndReplaceUrls } = require('../../utils/utils');
+
 
 class Bot {
     constructor(config) {
@@ -19,6 +24,8 @@ class Bot {
         this.bot.on("polling_error", (err) => console.log(err));
 
         this.coinService = new CoinService();
+
+        this.twitterService = new TwitterService();
 
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
@@ -57,7 +64,7 @@ class Bot {
                         await this.bot.sendPhoto(msg.chat.id, command.image, {caption: command.response(msg)}).then((result) => {
                                 
                                 
-                        }).catch((error) => { console.log(error) });;
+                        }).catch((error) => { console.log(error) });
 
                     }else if(command.video != undefined){
                             
@@ -284,6 +291,67 @@ class Bot {
             console.log(error);
         }
 
+    }
+
+
+    async listenTweets(){
+
+        try {
+            const stream = await this.twitterService.getStream();
+
+            stream.on(ETwitterStreamEvent.Data, async (eventData) => {
+                console.log('Twitter has sent something:', eventData);
+
+                // Do not send this statuses
+                if(eventData.retweeted_status != undefined || eventData.delete != undefined){
+                    return;
+                }
+
+                let text = eventData.text;
+                let images = false;
+                let urls = false;
+
+                if(eventData.extended_tweet != undefined){
+
+                    text = eventData.extended_tweet.full_text;
+
+                    images = eventData.extended_tweet.entities.media;
+                    urls = eventData.extended_tweet.entities.urls;
+
+                    // Removing all urls from tweet and replacing them with real urls
+                    text = stripAndReplaceUrls(text, urls);
+
+
+                }
+
+                console.log(images, urls);
+
+                if(images){
+
+                    let image = images[0].media_url_https;
+
+                    await this.bot.sendPhoto(this.config.chat_id, image, {caption: text}).then((result) => {
+                        console.log(result);
+
+                        this.bot.pinChatMessage(this.config.chat_id, result.message_id);
+                                
+                    }).catch((error) => { console.log(error) });
+
+                }else{
+
+                    this.bot.sendMessage(this.config.chat_id,text).then((result) => {
+                        console.log(result);
+
+                        this.bot.pinChatMessage(this.config.chat_id, result.message_id);
+                    });
+                }
+
+                
+            });
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
 }
 

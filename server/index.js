@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 //const sequelize = require('../db/connections');
 const CronService = require('../cron');
+
+const TwitterService = require('../services/twitter.service');
 const cron = require('node-cron');
 
 const InitTelegramBots = require('../bots');
@@ -66,6 +68,8 @@ class Server {
     bots() {
 
         new InitTelegramBots();
+
+        new TwitterService();
 
     }
 

@@ -1,4 +1,5 @@
 const Bot = require('./bot');
+
 require('dotenv').config();
 
 
@@ -138,18 +139,27 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             }
         ]
 
-        this.setCommands();
+        try {
 
-        this.listenCommands();
+            this.setCommands();
 
-        this.welcomeMessage();
+            this.listenCommands();
 
-        this.listenBannedWords();
+            this.welcomeMessage();
 
-        this.scheduleMessages();
+            this.listenBannedWords();
 
-        this.priceCommand();        
+            this.scheduleMessages();
+
+            this.priceCommand();      
+            
+            this.listenTweets();   
+            
+        } catch (error) {
+            console.log(error);            
+        }
     }
+
 }
 
 module.exports = BotTEST;
