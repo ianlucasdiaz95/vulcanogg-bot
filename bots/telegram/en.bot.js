@@ -111,7 +111,7 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
         }
 
         this.bannedWords = {
-            words: ['hi','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment']
+            words: ['hi','hey','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment']
         }
 
         this.recurrentMessages = [
