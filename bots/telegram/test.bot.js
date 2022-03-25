@@ -129,9 +129,7 @@ Latest of Vulcano
 🗓 The IDO will be taking place 31st of March
 🛒 Marketplace at the end of March
 
-<a href="http://www.vulcano.gg/">Website</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>
-
-Mi fecha y hora actual es ${new Date()}`,
+<a href="http://www.vulcano.gg/">Website</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>`,
                 options: {
                     parse_mode : "HTML",
                     'disable_web_page_preview': true
