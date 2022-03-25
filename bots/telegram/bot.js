@@ -154,6 +154,34 @@ class Bot {
         });
     }
 
+    async listenBannedWords(){
+
+        try {
+
+            this.bot.on('message', async (msg) => {
+
+                var chatId = msg.chat.id;
+
+                if(msg.text != undefined){
+
+                    var bannedWords = this.bannedWords.words.filter(word => msg.text.toLowerCase() == word.toLowerCase());
+
+                    if(bannedWords.length > 0){
+
+                        await this.deleteMessage(chatId, msg.message_id, 0);
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     async priceCommand(){
 
         try {

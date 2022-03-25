@@ -110,11 +110,17 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
             }
         }
 
+        this.bannedWords = {
+            words: ['hi','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment']
+        }
+
         this.setCommands();
 
         this.listenCommands();
 
         this.welcomeMessage();
+
+        this.listenBannedWords();
 
         //this.priceCommand();
         

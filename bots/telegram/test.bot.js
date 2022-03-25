@@ -7,6 +7,7 @@ class BotTEST extends Bot {
         
         super(config);
 
+        // Commands
         this.commands = [
             {
                 command: 'info',
@@ -92,6 +93,7 @@ class BotTEST extends Bot {
 
         ];
 
+        // Welcome message 
         this.welcome = {
             message: (name) => {
                 return `Hola ${name}! Bienvenido al metaverso de Vulcano 🔥🔥
@@ -113,11 +115,17 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             muteText: 'Gracias, ya puedes escribir mensajes.'
         }
 
+        this.bannedWords = {
+            words: ['hi','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment'],
+        }
+
         this.setCommands();
 
         this.listenCommands();
 
         this.welcomeMessage();
+
+        this.listenBannedWords();
 
         //this.priceCommand();        
     }

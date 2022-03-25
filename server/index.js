@@ -27,7 +27,7 @@ class Server {
         // Bots
         this.bots();
 
-        // Rutas de mi aplicación
+        // Rutas
         this.routes();
     }
 
