@@ -119,12 +119,13 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
                 message: `<strong>🌋 V U L C A N O  🌋</strong>
 
 <i>Latest of Vulcano</i>
+🛒 Marketplace Released: <a href="https://www.vulcano.gg/app/marketplace">https://www.vulcano.gg/app/marketplace</a>
+✅ BitMart CEX Listing
 🤝 GameFi, GamesPad & BullPerk Partnerships
 🌟 Whitelist Open: <a href="https://bit.ly/3IixQJy">https://bit.ly/3IixQJy</a>
 🗓 The IDO will be taking place 31st of March
-🛒 Marketplace at the end of March
 
-<a href="http://www.vulcano.gg/">Website</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>`,
+<a href="http://www.vulcano.gg/">Website</a> l <a href="https://www.vulcano.gg/app/marketplace">Marketplace</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>`,
                 options: {
                     parse_mode : "HTML",
                     'disable_web_page_preview': true
