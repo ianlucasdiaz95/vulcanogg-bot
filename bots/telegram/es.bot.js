@@ -72,6 +72,7 @@ class BotES extends Bot {
                         [{ text: `🇺🇸 Comunidad Principal Ingles`, url:'https://t.me/VULCANO_En_Group' }],
                         [{ text: `🇪🇸 Comunidad Español`, url:'https://t.me/VULCANO_Grupo_Es' }],
                         [{ text: `🇧🇷 Comunidad Portugues`, url:'https://t.me/Vulcano_PT' }],
+                        [{ text: `🇫🇷 Comunidad Frances`, url:'https://t.me/vulcanoFR' }],
                         [{ text: `🇯🇵 Comunidad Japón`, url:'https://t.me/vulcanojp' }],
                         [{ text: `🇨🇳 Comunidad China`, url:'https://t.me/VulcanoChina' }],
                         [{ text: `🇰🇷 Comunidad Corea`, url:'https://t.me/vulcanokr' }],
