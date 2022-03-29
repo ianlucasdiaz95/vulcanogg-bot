@@ -79,6 +79,7 @@ class BotES extends Bot {
                         [{ text: `🇻🇳 Comunidad Vietnam`, url:'https://t.me/Vulcano_VN' }],
                         [{ text: `🇵🇭 Comunidad Filipinas`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Comunidad Turquía`, url:'https://t.me/vulcanoTR' }],
+                        [{ text: `🇮🇳 Comunidad India`, url:'https://t.me/vulcanoIN' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })
