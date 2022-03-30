@@ -38,7 +38,7 @@ class Bot {
         }
 
         this.bannedNames = {
-            names: ['contract'],
+            names: ['contract' ,'presale', 'pre-sale'],
         }
 
         this.coin = 'BTC_USDT';
