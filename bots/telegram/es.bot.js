@@ -135,6 +135,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         this.listenCommands();
 
+        this.listenBannedNames();
+
         //this.welcomeMessage();
 
         this.scheduleMessages();

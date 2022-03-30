@@ -145,6 +145,8 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
 
         this.listenBannedWords();
 
+        this.listenBannedNames();
+
         this.scheduleMessages();
         
     }

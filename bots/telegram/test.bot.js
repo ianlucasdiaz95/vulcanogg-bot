@@ -149,6 +149,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
             this.listenBannedWords();
 
+            this.listenBannedNames();
+
             this.scheduleMessages();
 
             this.priceCommand();      

@@ -117,6 +117,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         this.welcomeMessage();
 
+        this.listenBannedNames();
+
         //this.scheduleMessages();
 
     }

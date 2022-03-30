@@ -19,6 +19,16 @@ const moment = require('moment');
 class Bot {
     constructor(config) {
 
+        //Bot
+        this.bot = new TelegramBot(config.token, {polling: true});
+
+        //Services
+        this.coinService = new CoinService();
+        this.twitterService = new TwitterService();
+        this.bitmartCoinService = new BitmartCoinService();
+
+
+        //Variables
         this.config = config;
 
         this.deleteTime = 30 * 1000;
@@ -27,17 +37,15 @@ class Bot {
             priceCommand : moment(),
         }
 
+        this.bannedNames = {
+            names: ['contract'],
+        }
+
         this.coin = 'BTC_USDT';
 
-        this.bot = new TelegramBot(config.token, {polling: true});
+        
 
         this.bot.on("polling_error", (err) => console.log(err));
-
-        this.coinService = new CoinService();
-
-        this.twitterService = new TwitterService();
-
-        this.bitmartCoinService = new BitmartCoinService();
 
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
@@ -206,6 +214,36 @@ class Bot {
 
     }
 
+    async listenBannedNames(){
+
+        try {
+
+            this.bot.on('message', async (msg) => {
+
+                var chatId = msg.chat.id;
+
+                if(msg.from != undefined){
+
+                    var bannedNames = this.bannedNames.names.filter(name => msg.from.first_name.toLowerCase().includes(name.toLowerCase()));
+
+                    if(bannedNames.length > 0){
+
+                        await this.deleteMessage(chatId, msg.message_id, 0);
+
+                        //await this.bot.banChatMember(chatId, msg.from.id, {revoke_messages: true});
+
+                    }
+
+                }
+
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     async scheduleMessages(){
 
         for(let recurrentMessage of this.recurrentMessages){
@@ -237,12 +275,17 @@ class Bot {
                 this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
                     // check if message was sent 10 seconds ago
-                     if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 10 ){
+                    console.log(moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds'));
+                     if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
                          let time = moment().format('MM/DD/YYYY HH:mm:ss');
                          let timer = moment(this.timers.priceCommand).format('MM/DD/YYYY HH:mm:ss')
                           
 
-                        this.bot.sendMessage(this.config.chat_id, `Time: ${time}. Timer: ${timer} Only one at a time please! Wait a few seconds. 🤖`);
+                        this.bot.sendMessage(this.config.chat_id, `Only one at a time please! Wait a few seconds. 🤖`)
+                                .then(async (result) => {
+                                    await this.deleteMessage(this.config.chat_id, result.message_id, 5 * 1000);
+                                })
+                                .catch((error) => { console.log(error) });
 
                     }else{
 
@@ -259,7 +302,7 @@ class Bot {
                             })
                         }).then((result) => {
 
-                            this.timers.priceCommand = moment().unix();
+                            this.timers.priceCommand = moment();
 
                         }).catch((error) => { console.log(error) });
 
