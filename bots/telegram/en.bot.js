@@ -80,6 +80,7 @@ class BotEN extends Bot {
                         [{ text: `🇵🇭 Filipino Community`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇳 Indian Community`, url:'https://t.me/vulcanoIN' }],
+                        [{ text: `🇮🇩 Indonesian Community`, url:'https://t.me/vulcanoIDN' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

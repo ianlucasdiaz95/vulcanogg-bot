@@ -24,6 +24,13 @@ function stripAndReplaceUrls(text, urls) {
     return text;
 }
 
+function getPercentageChange(oldNumber, newNumber){
+    var decreaseValue = oldNumber - newNumber;
+
+    return (decreaseValue / oldNumber) * 100;
+}
+
 module.exports = {
-    stripAndReplaceUrls
+    stripAndReplaceUrls,
+    getPercentageChange
 };

@@ -1,16 +1,20 @@
 require('dotenv').config();
 
+//APIS
 const TelegramBot = require('node-telegram-bot-api');
-
-const CoinService = require('../../services/coin.service');
-
-const schedule = require('node-schedule');
-
-const TwitterService = require('../../services/twitter.service');
-
 const { ETwitterStreamEvent } = require('twitter-api-v2');
+
+//UTILS
 const { stripAndReplaceUrls } = require('../../utils/utils');
 
+//SERVICES
+const CoinService = require('../../services/coin.service');
+const BitmartCoinService = require('../../services/bitmart.coin.service');
+const TwitterService = require('../../services/twitter.service');
+
+//PLUGINS
+const schedule = require('node-schedule');
+const moment = require('moment');
 
 class Bot {
     constructor(config) {
@@ -19,6 +23,12 @@ class Bot {
 
         this.deleteTime = 30 * 1000;
 
+        this.timers = {
+            priceCommand : moment(),
+        }
+
+        this.coin = 'BTC_USDT';
+
         this.bot = new TelegramBot(config.token, {polling: true});
 
         this.bot.on("polling_error", (err) => console.log(err));
@@ -26,6 +36,8 @@ class Bot {
         this.coinService = new CoinService();
 
         this.twitterService = new TwitterService();
+
+        this.bitmartCoinService = new BitmartCoinService();
 
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
@@ -112,6 +124,8 @@ class Bot {
         try {
 
             this.bot.on('message', (msg) => {
+
+                console.log(msg);
         
                 var chatId = msg.chat.id;
 
@@ -218,24 +232,41 @@ class Bot {
     async priceCommand(){
 
         try {
-            
-            this.bot.onText(new RegExp('/price'), async (msg, match) => {
+           
 
-                var coinInfo = await this.coinService.parseCoinInfo('bitcoin');
-                this.bot.sendMessage(msg.chat.id, coinInfo, {
-                    'disable_web_page_preview': true,
-                    parse_mode : "HTML",
-                    reply_markup: JSON.stringify({
-                        inline_keyboard: [
-                        [{ text: `💰 Swap $VULC`, url:'https://vulcano.gg' }],
-                        [{ text: `📈 $VULC Chart`, url:'https://vulcano.gg' }],
-                        ]
-                    })
-                }).then((result) => {
+                this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
-                }).catch((error) => { console.log(error) });;
+                    // check if message was sent 10 seconds ago
+                     if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 10 ){
+                         let time = moment().format('MM/DD/YYYY HH:mm:ss');
+                         let timer = moment(this.timers.priceCommand).format('MM/DD/YYYY HH:mm:ss')
+                          
 
-            });
+                        this.bot.sendMessage(this.config.chat_id, `Time: ${time}. Timer: ${timer} Only one at a time please! Wait a few seconds. 🤖`);
+
+                    }else{
+
+                        var {parsedInfo, chart} = await this.bitmartCoinService.parseCoinInfo(this.coin);
+                        
+                        this.bot.sendMessage(msg.chat.id,parsedInfo ,{
+                            'disable_web_page_preview': true,
+                            parse_mode : "HTML",
+                            reply_markup: JSON.stringify({
+                                inline_keyboard: [
+                                [{ text: `💰 Swap $VULC`, url:'https://vulcano.gg' }],
+                                [{ text: `📈 $VULC Chart`, url:'https://vulcano.gg' }],
+                                ]
+                            })
+                        }).then((result) => {
+
+                            this.timers.priceCommand = moment().unix();
+
+                        }).catch((error) => { console.log(error) });
+
+                    }
+
+                });
+
 
         } catch (error) {
             console.log(error);
@@ -300,7 +331,6 @@ class Bot {
             const stream = await this.twitterService.getStream();
 
             stream.on(ETwitterStreamEvent.Data, async (eventData) => {
-                console.log('Twitter has sent something:', eventData);
 
                 // Do not send this statuses
                 if(eventData.retweeted_status != undefined || eventData.delete != undefined){
@@ -324,14 +354,11 @@ class Bot {
 
                 }
 
-                console.log(images, urls);
-
                 if(images){
 
                     let image = images[0].media_url_https;
 
                     await this.bot.sendPhoto(this.config.chat_id, image, {caption: text}).then((result) => {
-                        console.log(result);
 
                         this.bot.pinChatMessage(this.config.chat_id, result.message_id);
                                 
@@ -340,7 +367,6 @@ class Bot {
                 }else{
 
                     this.bot.sendMessage(this.config.chat_id,text).then((result) => {
-                        console.log(result);
 
                         this.bot.pinChatMessage(this.config.chat_id, result.message_id);
                     });

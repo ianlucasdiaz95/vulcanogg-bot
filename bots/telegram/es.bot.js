@@ -80,6 +80,7 @@ class BotES extends Bot {
                         [{ text: `🇵🇭 Comunidad Filipinas`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Comunidad Turquía`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇳 Comunidad India`, url:'https://t.me/vulcanoIN' }],
+                        [{ text: `🇮🇩 Comunidad Indonesia`, url:'https://t.me/vulcanoIDN' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })
@@ -134,7 +135,7 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         this.listenCommands();
 
-        this.welcomeMessage();
+        //this.welcomeMessage();
 
         this.scheduleMessages();
 
