@@ -22,7 +22,6 @@ class BotEN extends Bot {
 0x3810a078AA274Ea6d06a480588eFf8fE517220a4
 
 <a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 View on BscScan </a>
-
 <a href="https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4">💸 Trade on PancakeSwap</a>`,
                 options: {
                     parse_mode: "HTML",
