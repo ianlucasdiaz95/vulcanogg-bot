@@ -17,7 +17,15 @@ class BotES extends Bot {
             {
                 command: 'contrato',
                 description: 'Información sobre el contrato de $VULC.',
-                response: data => 'El token todavía no salió, estate atento para más información.'
+                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> Contract Address: 
+
+0x3810a078AA274Ea6d06a480588eFf8fE517220a4
+
+<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 Ver en BscScan </a>`,
+                options: {
+                    parse_mode: "HTML",
+                    'disable_web_page_preview': true
+                }
             },
             {
                 command: 'website',
@@ -139,7 +147,7 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         //this.welcomeMessage();
 
-        this.scheduleMessages();
+        //this.scheduleMessages();
 
     }
 }

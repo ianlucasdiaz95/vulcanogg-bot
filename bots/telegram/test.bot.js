@@ -19,7 +19,15 @@ class BotTEST extends Bot {
             {
                 command: 'contrato',
                 description: 'Información sobre el contrato de $VULC.',
-                response: data => 'Vulcano Token is not yet released, please stay tuned for further information.'
+                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> Contract Address: 0x3810a078AA274Ea6d06a480588eFf8fE517220a4
+
+<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 View on BscScan </a>
+
+<a href="https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4">💸 Buy on PancakeSwap</a>`,
+                options: {
+                    parse_mode: "HTML",
+                    'disable_web_page_preview': true
+                }
             },
             {
                 command: 'website',

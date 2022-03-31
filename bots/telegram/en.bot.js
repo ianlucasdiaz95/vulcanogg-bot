@@ -17,7 +17,15 @@ class BotEN extends Bot {
             {
                 command: 'contract',
                 description: 'Information about Vulcano Token Contract',
-                response: data => 'Vulcano Token is not yet released, please stay tuned for further information.'
+                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> Contract Address: 
+                
+0x3810a078AA274Ea6d06a480588eFf8fE517220a4
+
+<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 View on BscScan </a>`,
+                options: {
+                    parse_mode: "HTML",
+                    'disable_web_page_preview': true
+                }
             },
             {
                 command: 'website',
@@ -147,7 +155,7 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
 
         this.listenBannedNames();
 
-        this.scheduleMessages();
+        //this.scheduleMessages();
         
     }
 }
