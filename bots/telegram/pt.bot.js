@@ -11,18 +11,27 @@ class BotPT extends Bot {
             {
                 command: 'info',
                 description: 'Informações sobre mim.',
-                response: data => `Eu sou Keppler. Não tenho gênero. Eu venho de uma raça mecânica de andróides criada em Vulcano I.`,
+                response: data => `Eu sou Keppler. Sem gênero. De uma raça mecânica composta por andróides criados em Vulcan I.`,
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
                 command: 'contrato',
-                description: 'Informações do contrato $VULC.',
-                response: data => 'O token ainda não saiu, fique atento para mais informações.'
+                description: 'Informações sobre o contrato do token Vulcano.',
+                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> endereço do contrato:
+                
+0x3810a078AA274Ea6d06a480588eFf8fE517220a4
+
+<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 Veja na BscScan </a>
+<a href="https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4">💸 Compre na PancakeSwap</a>`,
+                options: {
+                    parse_mode: "HTML",
+                    'disable_web_page_preview': true
+                }
             },
             {
                 command: 'website',
-                description: 'Informações sobre nosso site.',
-                response: data => '<strong>Visite o nosso site 👇</strong>',
+                description: 'Informações oficiais sobre o website do Vulcano.',
+                response: data => '<strong>Visite nosso website aqui 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -35,8 +44,8 @@ class BotPT extends Bot {
             },
             {
                 command: 'whitepaper',
-                description: 'Informações sobre nosso whitepaper.',
-                response: data => '<strong>Confira nosso whitepaper 👇</strong>',
+                description: 'Informações oficiais sobre o whitepaper do Vulcano.',
+                response: data => '<strong>Confira nosso Whitepaper aqui 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -49,8 +58,8 @@ class BotPT extends Bot {
             },
             {
                 command: 'roadmap',
-                description: 'Informações sobre nosso roadmap.',
-                response: data => '<strong>Acesse aqui o roadmap 👇</strong>',
+                description: 'Informações oficiais sobre o roadmap do Vulcano.',
+                response: data => '<strong>Acesse nosso roadmap aqui 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -63,13 +72,13 @@ class BotPT extends Bot {
             },
             {
                 command: 'comunidades',
-                description: 'Nossas comunidades oficiais em todo o mundo.',
-                response: data => `<strong>🌍 Nossas comunidades oficiais 🌍</strong>`,
+                description: 'Informações oficiais sobre as comunidades do Vulcano ao redor do mundo.',
+                response: data => `<strong>🌎 Comunidades oficiais do Vulcano 🌎</strong>`,
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
                         inline_keyboard: [
-                        [{ text: `🇺🇸 Comunidad Inglês Principal`, url:'https://t.me/VULCANO_En_Group' }],
+                        [{ text: `🇺🇸 Comunidad Inglês`, url:'https://t.me/VULCANO_En_Group' }],
                         [{ text: `🇪🇸 Comunidad Espanhol`, url:'https://t.me/VULCANO_Grupo_Es' }],
                         [{ text: `🇧🇷 Comunidad Português`, url:'https://t.me/Vulcano_PT' }],
                         [{ text: `🇫🇷 Comunidad francês`, url:'https://t.me/vulcanoFR' }],
@@ -115,7 +124,7 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
 
         this.listenCommands();
 
-        this.welcomeMessage();
+        //this.welcomeMessage();
 
         this.listenBannedNames();
 
