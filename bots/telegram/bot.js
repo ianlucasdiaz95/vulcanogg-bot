@@ -51,6 +51,8 @@ class Bot {
         // Logging
         this.bot.on("polling_error", (err) => console.log(err));
 
+        this.bot.on("message", (msg) => console.log(msg));
+
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
     }
@@ -136,8 +138,6 @@ class Bot {
         try {
 
             this.bot.on('message', (msg) => {
-
-                console.log(msg);
         
                 var chatId = msg.chat.id;
 
