@@ -15,7 +15,7 @@ class BotPT extends Bot {
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
-                command: 'contrato',
+                command: 'contract',
                 description: 'Informações sobre o contrato do token Vulcano.',
                 response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> endereço do contrato:
                 
@@ -71,7 +71,7 @@ class BotPT extends Bot {
                 }
             },
             {
-                command: 'comunidades',
+                command: 'communities',
                 description: 'Informações oficiais sobre as comunidades do Vulcano ao redor do mundo.',
                 response: data => `<strong>🌎 Comunidades oficiais do Vulcano 🌎</strong>`,
                 options : {
