@@ -41,10 +41,14 @@ class Bot {
             names: ['contract' ,'presale', 'pre-sale', 'pancakeswap'],
         }
 
-        this.coin = 'BTC_USDT';
-
+        this.coin = { 
+            id: 'vulcano-2',
+            name: 'Vulcano',
+            symbol: 'VULC',
+            chart: true
+        };
         
-
+        // Logging
         this.bot.on("polling_error", (err) => console.log(err));
 
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
@@ -270,34 +274,50 @@ class Bot {
     async priceCommand(){
 
         try {
-           
+            this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
-                this.bot.onText(new RegExp('/price'), async (msg, match) => {
+                // check if message was sent 10 seconds ago
+                console.log(moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds'));
+                if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
+                    
 
-                    // check if message was sent 10 seconds ago
-                    console.log(moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds'));
-                     if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
-                         let time = moment().format('MM/DD/YYYY HH:mm:ss');
-                         let timer = moment(this.timers.priceCommand).format('MM/DD/YYYY HH:mm:ss')
-                          
+                this.bot.sendMessage(this.config.chat_id, `Only one at a time please! Wait a few seconds. 🤖`)
+                        .then(async (result) => {
+                            await this.deleteMessage(this.config.chat_id, result.message_id, 5 * 1000);
+                        })
+                        .catch((error) => { console.log(error) });
 
-                        this.bot.sendMessage(this.config.chat_id, `Only one at a time please! Wait a few seconds. 🤖`)
-                                .then(async (result) => {
-                                    await this.deleteMessage(this.config.chat_id, result.message_id, 5 * 1000);
-                                })
-                                .catch((error) => { console.log(error) });
+                }else{
+
+                    var parsedInfo = await this.coinService.parseCoinInfo(this.coin.id);
+
+                    if(this.coin.chart){
+
+                        var chart = await this.coinService.getChartImage(this.coin.id);
+
+                        await this.bot.sendPhoto(this.config.chat_id, chart.url, {caption: parsedInfo, 'disable_web_page_preview': true,
+                            parse_mode : "HTML",
+                            reply_markup: JSON.stringify({
+                                inline_keyboard: [
+                                [{ text: `💰 Swap $VULC`, url:'https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4' }],
+                                [{ text: `📈 $VULC Chart`, url:'https://poocoin.app/tokens/0x3810a078aa274ea6d06a480588eff8fe517220a4' }],
+                                ]
+                            })
+                        }).then((result) => {
+
+                                this.timers.priceCommand = moment();
+
+                        }).catch((error) => { console.log(error) });
 
                     }else{
 
-                        var {parsedInfo, chart} = await this.bitmartCoinService.parseCoinInfo(this.coin);
-                        
                         this.bot.sendMessage(msg.chat.id,parsedInfo ,{
                             'disable_web_page_preview': true,
                             parse_mode : "HTML",
                             reply_markup: JSON.stringify({
                                 inline_keyboard: [
-                                [{ text: `💰 Swap $VULC`, url:'https://vulcano.gg' }],
-                                [{ text: `📈 $VULC Chart`, url:'https://vulcano.gg' }],
+                                [{ text: `💰 Swap $VULC`, url:'https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4' }],
+                                [{ text: `📈 $VULC Chart`, url:'https://poocoin.app/tokens/0x3810a078aa274ea6d06a480588eff8fe517220a4' }],
                                 ]
                             })
                         }).then((result) => {
@@ -308,7 +328,9 @@ class Bot {
 
                     }
 
-                });
+                }
+
+            });
 
 
         } catch (error) {
