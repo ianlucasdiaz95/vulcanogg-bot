@@ -45,7 +45,7 @@ class Bot {
             id: 'vulcano-2',
             name: 'Vulcano',
             symbol: 'VULC',
-            chart: true
+            chart: false
         };
         
         // Logging

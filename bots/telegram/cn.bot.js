@@ -96,11 +96,11 @@ class BotCN extends Bot {
                 }
                 
             },
-             /*{
+             {
                 command: 'price',
                 description: '$VULC 代币价格代码',
                 custom: true
-            }*/
+            }
 
         ];
 
@@ -128,6 +128,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
         this.setCommands();
 
         this.listenCommands();
+
+        this.priceCommand();
 
         //this.welcomeMessage();
 

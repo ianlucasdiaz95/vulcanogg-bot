@@ -96,11 +96,11 @@ class BotEN extends Bot {
                 }
                 
             },
-            /*{
+            {
                 command: 'price',
-                description: '$VULC Token Price Ticker',
+                description: '$VULC Token Price',
                 custom: true
-            }*/
+            }
 
         ];
 
@@ -155,6 +155,8 @@ Follow the links below to learn more about Vulcano and what it has to offer.`;
         this.listenBannedWords();
 
         this.listenBannedNames();
+
+        this.priceCommand();
 
         //this.scheduleMessages();
         

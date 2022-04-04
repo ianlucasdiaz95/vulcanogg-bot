@@ -94,7 +94,11 @@ class BotKR extends Bot {
                         ]
                     })
                 }
-                
+            },
+            {
+                command: 'price',
+                description: '$VULC Token Price',
+                custom: true
             }
 
         ];
@@ -123,6 +127,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
         this.setCommands();
 
         this.listenCommands();
+
+        this.priceCommand();
 
         //this.welcomeMessage();
 

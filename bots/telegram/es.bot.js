@@ -94,7 +94,11 @@ class BotES extends Bot {
                         ]
                     })
                 }
-                
+            },
+            {
+                command: 'price',
+                description: 'Consulta el precio de $VULC.',
+                custom: true
             }
 
         ];
@@ -145,6 +149,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
         this.listenCommands();
 
         this.listenBannedNames();
+
+        this.priceCommand();
 
         //this.welcomeMessage();
 
