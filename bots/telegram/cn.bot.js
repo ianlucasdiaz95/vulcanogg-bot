@@ -106,38 +106,13 @@ class BotCN extends Bot {
 
         ];
 
-        this.welcome = {
-            message: (name) => {
-                return `Hola ${name}! Bienvenido al metaverso de Vulcano 🔥🔥
-
-En los enlaces debajo te dejamos todos los links para obtener más información acerca de Vulcano.`;
-            },
-            options: {
-                parse_mode : "HTML",
-                reply_markup: JSON.stringify({
-                    inline_keyboard: [
-                    [{ text: `🌐 Website`, url:'https://vulcano.gg' }, { text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }, { text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
-                    [{ text: `💪 Nossa equipe`, url:'https://www.vulcano.gg/team' }, { text: `🤝 Partners`, url:'https://www.vulcano.gg/#partners' }],
-                    [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }, { text: `🔵 Twitter`, url:'https://twitter.com/Vulcano_Game' }],
-                    [{ text: '🔇 Click acá para empezar a escribir ✅', callback_data: 'unmute' }]
-                    ]
-                })
-            },
-            mute: true,
-            muteText: 'Obrigado, agora você pode escrever mensagens.'
-        }
-
         this.setCommands();
 
         this.listenCommands();
 
         this.priceCommand();
 
-        //this.welcomeMessage();
-
         this.listenBannedNames();
-
-        //this.scheduleMessages();
 
     }
 }

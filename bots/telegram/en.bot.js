@@ -106,61 +106,19 @@ class BotEN extends Bot {
 
         ];
 
-        this.welcome = {
-            message: (name) => {
-                return `Hello ${name}! Welcome to the metaverse of Vulcano 🔥🔥
-
-Follow the links below to learn more about Vulcano and what it has to offer.`;
-            },
-            options: {
-                parse_mode : "HTML",
-                reply_markup: JSON.stringify({
-                    inline_keyboard: [
-                    [{ text: `🌐 Website`, url:'https://vulcano.gg' }, { text: `📜 Whitepaper`, url:'https://vulcano.gitbook.io/vulcano-whitepaper-en/' }, { text: `🗺️ Roadmap`, url:'https://www.vulcano.gg/#roadmap' }],
-                    [{ text: `💪 Our team`, url:'https://www.vulcano.gg/team' }, { text: `🤝 Partners`, url:'https://www.vulcano.gg/#partners' }],
-                    [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }, { text: `🔵 Twitter`, url:'https://twitter.com/Vulcano_Game' }],
-                    ]
-                })
-            }
-        }
-
         this.bannedWords = {
             words: ['hi','hey','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment']
         }
 
-        this.recurrentMessages = [
-            {
-                message: `<strong>🌋 V U L C A N O  🌋</strong>
-
-<i>Latest of Vulcano</i>
-🛒 Marketplace Released: <a href="https://www.vulcano.gg/app/marketplace">https://www.vulcano.gg/app/marketplace</a>
-✅ BitMart CEX Listing
-🤝 GameFi, GamesPad & BullPerk Partnerships
-🌟 Whitelist Open: <a href="https://bit.ly/3IixQJy">https://bit.ly/3IixQJy</a>
-🗓 The IDO will be taking place 31st of March
-
-<a href="http://www.vulcano.gg/">Website</a> l <a href="https://www.vulcano.gg/app/marketplace">Marketplace</a> l <a href="https://twitter.com/Vulcano_Game">Twitter</a> l <a href="https://discord.gg/vulcanogame">Discord</a> l <a href="https://t.me/VULCANO_gg">Announcements</a> l <a href="https://vulcano.gitbook.io/vulcano-whitepaper-en/">Whitepaper</a> l <a href="https://www.vulcano.gg/#roadmap">Roadmap</a>`,
-                options: {
-                    parse_mode : "HTML",
-                    'disable_web_page_preview': true
-                },
-                rule: '0 14 * * *',
-            }
-        ]
-
         this.setCommands();
 
         this.listenCommands();
-
-        this.welcomeMessage();
 
         this.listenBannedWords();
 
         this.listenBannedNames();
 
         this.priceCommand();
-
-        //this.scheduleMessages();
         
     }
 }

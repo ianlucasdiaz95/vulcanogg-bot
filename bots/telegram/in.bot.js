@@ -119,8 +119,6 @@ class BotIN extends Bot {
         this.listenBannedNames();
 
         this.priceCommand();
-
-        //this.scheduleMessages();
         
     }
 }
