@@ -112,6 +112,8 @@ class BotCN extends Bot {
 
         this.priceCommand();
 
+        this.listenBannedWords();
+
         this.listenBannedNames();
 
     }

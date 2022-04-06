@@ -109,6 +109,8 @@ class BotES extends Bot {
 
         this.listenCommands();
 
+        this.listenBannedWords();
+
         this.listenBannedNames();
 
         this.priceCommand();

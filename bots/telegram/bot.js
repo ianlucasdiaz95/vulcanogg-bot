@@ -41,6 +41,11 @@ class Bot {
             names: ['contract' ,'presale', 'pre-sale', 'pancakeswap'],
         }
 
+        this.bannedWords = {
+            exact: ['hi','hey','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment', 'pinksale', '.finance'],
+            contains: ['pinksale', '.finance']
+        }
+
         this.coin = { 
             id: 'vulcano-2',
             name: 'Vulcano',
@@ -192,6 +197,8 @@ class Bot {
 
     async listenBannedWords(){
 
+        let banTime = 172800; // 48hs
+
         try {
 
             this.bot.on('message', async (msg) => {
@@ -200,11 +207,25 @@ class Bot {
 
                 if(msg.text != undefined){
 
-                    var bannedWords = this.bannedWords.words.filter(word => msg.text.toLowerCase() == word.toLowerCase());
+                    //Exact match
+                    var bannedExact = this.bannedWords.exact.filter(word => msg.text.toLowerCase() == word.toLowerCase());
 
-                    if(bannedWords.length > 0){
+                    if(bannedExact.length > 0){
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
+
+                        //await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
+
+                    }
+
+                    //Text contains match
+                    var bannedContains = this.bannedWords.contains.filter(word => msg.text.toLowerCase().includes(word.toLowerCase()));
+
+                    if(bannedContains.length > 0){
+
+                        await this.deleteMessage(chatId, msg.message_id, 0);
+
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
 
                     }
 
@@ -220,6 +241,8 @@ class Bot {
 
     async listenBannedNames(){
 
+        let banTime = 172800; // 48hs
+
         try {
 
             this.bot.on('message', async (msg) => {
@@ -234,7 +257,7 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        //await this.bot.banChatMember(chatId, msg.from.id, {revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
 
                     }
 

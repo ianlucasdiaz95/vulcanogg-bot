@@ -124,10 +124,6 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             muteText: 'Gracias, ya puedes escribir mensajes.'
         }
 
-        this.bannedWords = {
-            words: ['hi','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment'],
-        }
-
         this.recurrentMessages = [
             {
                 message: `<strong>🌋 V U L C A N O  🌋</strong>

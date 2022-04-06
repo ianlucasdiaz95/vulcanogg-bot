@@ -111,6 +111,8 @@ class BotKR extends Bot {
 
         this.priceCommand();
 
+        this.listenBannedWords();
+
         this.listenBannedNames();
 
     }
