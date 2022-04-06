@@ -106,10 +106,6 @@ class BotEN extends Bot {
 
         ];
 
-        this.bannedWords = {
-            words: ['hi','hey','hi guys','hello','nice project', 'hi good project', 'good project', 'good investment']
-        }
-
         this.setCommands();
 
         this.listenCommands();
