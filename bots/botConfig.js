@@ -44,6 +44,16 @@ module.exports = {
         token: '5222161662:AAEMecAeODX6hAtvRFU5PuQkE3oZfEEg07Y',
         chat_id: '',
     },
+    sa: {
+        username: '@KepplerSAbot',
+        token: '5224740160:AAG-AwaEShENn5xDIAL5jPc8M3X6NLVrG3E',
+        chat_id: '',
+    },
+    fr: {
+        username: '@KepplerFRbot',
+        token: '5219778112:AAFJnl3z-WkEf4l5szu8PPOE0rm55UIqPLo',
+        chat_id: '',
+    },
     test: {
         username: '@VulcanoTEST_bot',
         token: '5254612455:AAGsUQaG074Qs7cXFEiBTxwPErwvbujHfo4',
