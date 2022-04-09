@@ -305,7 +305,7 @@ class Bot {
                 if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
                     
 
-                this.bot.sendMessage(msg.chat.id, `Only one at a time please! Wait a few seconds. 🤖`)
+                this.bot.sendMessage(msg.chat.id, `I'm still recharging... Wait a few seconds. ⚡🤖`)
                         .then(async (result) => {
                             await this.deleteMessage(msg.chat.id, result.message_id, 5 * 1000);
                         })
