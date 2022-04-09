@@ -57,7 +57,7 @@ class Bot {
         // Logging
         this.bot.on("polling_error", (err) => console.log(err));
 
-        this.bot.on("message", (msg) => console.log(msg));
+        //this.bot.on("message", (msg) => console.log(msg));
 
         console.log(this.config.username + ' Online.' + ' at ' + new Date());
         
@@ -215,7 +215,7 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        //await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
 
                     }
 
@@ -258,7 +258,7 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        //await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
 
                     }
 
@@ -305,9 +305,9 @@ class Bot {
                 if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
                     
 
-                this.bot.sendMessage(this.config.chat_id, `Only one at a time please! Wait a few seconds. 🤖`)
+                this.bot.sendMessage(msg.chat.id, `Only one at a time please! Wait a few seconds. 🤖`)
                         .then(async (result) => {
-                            await this.deleteMessage(this.config.chat_id, result.message_id, 5 * 1000);
+                            await this.deleteMessage(msg.chat.id, result.message_id, 5 * 1000);
                         })
                         .catch((error) => { console.log(error) });
 
@@ -319,7 +319,7 @@ class Bot {
 
                         var chart = await this.coinService.getChartImage(this.coin.id);
 
-                        await this.bot.sendPhoto(this.config.chat_id, chart.url, {caption: parsedInfo, 'disable_web_page_preview': true,
+                        await this.bot.sendPhoto(msg.chat.id, chart.url, {caption: parsedInfo, 'disable_web_page_preview': true,
                             parse_mode : "HTML",
                             reply_markup: JSON.stringify({
                                 inline_keyboard: [
