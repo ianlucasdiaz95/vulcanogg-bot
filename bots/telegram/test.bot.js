@@ -158,6 +158,8 @@ En los enlaces debajo te dejamos todos los links para obtener más información 
             this.scheduleMessages();
 
             this.priceCommand();      
+
+            this.testEnviroment();
             
             //this.listenTweets();   
             

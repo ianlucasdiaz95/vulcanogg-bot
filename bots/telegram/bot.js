@@ -15,6 +15,7 @@ const TwitterService = require('../../services/twitter.service');
 //PLUGINS
 const schedule = require('node-schedule');
 const moment = require('moment');
+const Web3 = require('web3');
 
 class Bot {
     constructor(config) {
@@ -257,7 +258,7 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
+                        //await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
 
                     }
 
@@ -464,8 +465,16 @@ class Bot {
             });
         } catch (error) {
             console.log(error);
+
+            
         }
        
+    }
+
+    async testEnviroment(){
+
+        
+
     }
 }
 
