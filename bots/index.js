@@ -32,7 +32,7 @@ class InitBots {
             new BotTR(botConfig.tr);
             new BotFR(botConfig.fr);
             new BotSA(botConfig.sa);
-            new BotSVN(botConfig.vn);
+            new BotVN(botConfig.vn);
 
         }else if(process.env.NODE_ENV == 'development'){
 
