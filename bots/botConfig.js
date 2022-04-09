@@ -54,6 +54,11 @@ module.exports = {
         token: '5219778112:AAFJnl3z-WkEf4l5szu8PPOE0rm55UIqPLo',
         chat_id: '',
     },
+    vn: {
+        username: '@KepplerVNbot',
+        token: '5107608390:AAGLSvgDUYFwRKIYdzSt0P7fz7TVty7yQ44',
+        chat_id: '',
+    },
     test: {
         username: '@VulcanoTEST_bot',
         token: '5254612455:AAGsUQaG074Qs7cXFEiBTxwPErwvbujHfo4',
