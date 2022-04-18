@@ -301,7 +301,6 @@ class Bot {
             this.bot.onText(new RegExp('/price'), async (msg, match) => {
 
                 // check if message was sent 10 seconds ago
-                console.log(moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds'));
                 if( moment().diff(moment(this.timers.priceCommand).add(10, 'seconds'), 'seconds') <= 0 ){
                     
 

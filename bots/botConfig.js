@@ -59,6 +59,16 @@ module.exports = {
         token: '5107608390:AAGLSvgDUYFwRKIYdzSt0P7fz7TVty7yQ44',
         chat_id: '',
     },
+    nl: {
+        username: '@KepplerNLbot',
+        token: '5338189319:AAGhWcUQRgixJa5nXsxe-KwzBXFS-IBjDxw',
+        chat_id: '',
+    },
+    de: {
+        username: '@KepplerDEbot',
+        token: '5364788967:AAGW9SdbG1mrc3-kNN7YsgmVlPJhxB87i9U',
+        chat_id: '',
+    },
     test: {
         username: '@VulcanoTEST_bot',
         token: '5254612455:AAGsUQaG074Qs7cXFEiBTxwPErwvbujHfo4',

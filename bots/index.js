@@ -11,6 +11,8 @@ const BotTR = require('./telegram/tr.bot');
 const BotFR = require('./telegram/fr.bot');
 const BotSA = require('./telegram/sa.bot');
 const BotVN = require('./telegram/vn.bot');
+const BotNL = require('./telegram/nl.bot');
+const BotDE = require('./telegram/de.bot');
 
 const BotTEST = require('./telegram/test.bot');
 
@@ -33,6 +35,8 @@ class InitBots {
             new BotFR(botConfig.fr);
             new BotSA(botConfig.sa);
             new BotVN(botConfig.vn);
+            new BotNL(botConfig.nl);
+            new BotDE(botConfig.de);
 
         }else if(process.env.NODE_ENV == 'development'){
 

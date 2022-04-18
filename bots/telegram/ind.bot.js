@@ -92,6 +92,7 @@ class BotIND extends Bot {
                         [{ text: `🇮🇩 Komunitas Indonesia`, url:'https://t.me/vulcanoIDN' }],
                         [{ text: `🇳🇱 Komunitas Dutch`, url:'https://t.me/vulcanodutch' }],
                         [{ text: `🇸🇦 Komunitas Arabic`, url:'https://t.me/vulcanoarabic' }],
+                        [{ text: `🇩🇪 Komunitas German`, url:'https://t.me/vulcanoarabic' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

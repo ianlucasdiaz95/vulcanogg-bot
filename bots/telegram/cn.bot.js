@@ -92,6 +92,7 @@ class BotCN extends Bot {
                         [{ text: `🇮🇩 印尼社区`, url:'https://t.me/vulcanoIDN' }],
                         [{ text: `🇳🇱 荷兰社区`, url:'https://t.me/vulcanodutch' }],
                         [{ text: `🇸🇦 阿拉伯语社区`, url:'https://t.me/vulcanoarabic' }],
+                        [{ text: `🇩🇪 德国社区`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

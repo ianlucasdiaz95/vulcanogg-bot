@@ -2,7 +2,7 @@ const Bot = require('./bot');
 require('dotenv').config();
 
 
-class BotVN extends Bot {
+class BotDE extends Bot {
     constructor(config) {
         
         super(config);
@@ -10,19 +10,19 @@ class BotVN extends Bot {
         this.commands = [
             {
                 command: 'info',
-                description: 'thông tin về tôi',
-                response: data => `Tôi là Keppler. Phi giới tính. Từ một chủng tộc máy móc được tạo thành từ những người máy được tạo ra trên Vulcan I.`,
+                description: 'Informationen über mich',
+                response: data => `Ik ben Keppler. Geslachtloos. Van een mechanisch ras bestaande uit androïden gemaakt op Vulcan I`,
                 image: process.env.URL + '/assets/images/en/keppler.jpeg',
             },
             {
                 command: 'contract',
-                description: 'thông tin về Hợp đồng mã thông báo Vulcano',
-                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> Contract Address: 
+                description: 'Informationen über den Vulcano-Token-Vertrag',
+                response: data => `<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">$VULC</a> Vertragsadresse: 
                 
 0x3810a078AA274Ea6d06a480588eFf8fE517220a4
 
-<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 View on BscScan </a>
-<a href="https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4">💸 Trade on PancakeSwap</a>`,
+<a href="https://bscscan.com/token/0x3810a078AA274Ea6d06a480588eFf8fE517220a4">🔎 Auf BscScan anzeigen </a>
+<a href="https://pancakeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x3810a078AA274Ea6d06a480588eFf8fE517220a4">💸 Handeln Sie auf PancakeSwap</a>`,
                 options: {
                     parse_mode: "HTML",
                     'disable_web_page_preview': true
@@ -30,8 +30,8 @@ class BotVN extends Bot {
             },
             {
                 command: 'website',
-                description: 'Thông tin trang web chính thức của Vulcano.',
-                response: data => '<strong>Ghé thăm trang web của chúng tôi tại đây 👇</strong>',
+                description: 'Informationen der offiziellen Vulcano-Websites.',
+                response: data => '<strong>Besuchen Sie unsere Website hier 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -44,8 +44,8 @@ class BotVN extends Bot {
             },
             {
                 command: 'whitepaper',
-                description: 'Thông tin chính thức về Whitepaper của Vulcano',
-                response: data => '<strong>Kiểm tra Whitepaper chính thức của chúng tôi tại đây 👇</strong>',
+                description: 'Vulcano Offizielle Whitepaper-Informationen',
+                response: data => '<strong>Sehen Sie sich hier unser Whitepaper an 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -58,8 +58,8 @@ class BotVN extends Bot {
             },
             {
                 command: 'roadmap',
-                description: 'Thông tin về Roadmap Chính thức của Vulcano',
-                response: data => '<strong>Kiểm tra Road map của chúng tôi tại đây 👇</strong>',
+                description: 'Vulcano Officiële Roadmap informatie',
+                response: data => '<strong>Bekijk hier onze Roadmap 👇</strong>',
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -72,8 +72,8 @@ class BotVN extends Bot {
             },
             {
                 command: 'communities',
-                description: 'Cộng đồng chính thức của Vulcano trên toàn cầu',
-                response: data => `<strong>🌍 Cộng đồng chính thức của Vulcano 🌍</strong>`,
+                description: 'Vulcano Officiële Gemeenschappen over de hele wereld',
+                response: data => `<strong>🌍 Vulcano Officiële Gemeenschappen 🌍</strong>`,
                 options : {
                     parse_mode : "HTML",
                     reply_markup: JSON.stringify({
@@ -101,7 +101,7 @@ class BotVN extends Bot {
             },
             {
                 command: 'price',
-                description: 'Giá mã thông báo $ VULC',
+                description: '$VULC Token Prijs',
                 custom: true
             }
 
@@ -120,5 +120,5 @@ class BotVN extends Bot {
     }
 }
 
-module.exports = BotVN;
+module.exports = BotDE;
 
