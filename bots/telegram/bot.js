@@ -204,6 +204,8 @@ class Bot {
 
             this.bot.on('message', async (msg) => {
 
+                console.log(msg);
+
                 var chatId = msg.chat.id;
 
                 if(msg.text != undefined){
@@ -215,7 +217,9 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime}).then((result) => {
+                            console.log(result, 'banned');
+                        }).catch((error) => { console.log(error) });;
 
                     }
 
@@ -226,7 +230,9 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime ,revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime }).then((result) => {
+                            console.log(result, 'banned');
+                        }).catch((error) => { console.log(error) });
 
                     }
 
@@ -258,7 +264,9 @@ class Bot {
 
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
-                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime, revoke_messages: true});
+                        await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime}).then((result) => {
+                            console.log(result, 'banned');
+                        }).catch((error) => { console.log(error) });
 
                     }
 
@@ -362,8 +370,9 @@ class Bot {
     }
 
     async deleteMessage(chatId, messageId, time = this.deleteTime){
+        console.log(chatId, messageId);
         setTimeout(() => {
-            this.bot.deleteMessage(chatId, messageId);
+            this.bot.deleteMessage(chatId, messageId).then((result) => {}).catch((error) => { console.log(error) });
         }, time);
     }
 
