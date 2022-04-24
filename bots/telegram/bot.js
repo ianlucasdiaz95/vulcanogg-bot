@@ -218,8 +218,8 @@ class Bot {
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
                         await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime}).then((result) => {
-                            console.log(result, 'banned');
-                        }).catch((error) => { console.log(error) });;
+                            console.log('banned: ',msg,' ', result );
+                        }).catch((error) => { console.log(error) });
 
                     }
 
@@ -231,7 +231,7 @@ class Bot {
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
                         await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime }).then((result) => {
-                            console.log(result, 'banned');
+                            console.log('banned: ',msg,' ', result );
                         }).catch((error) => { console.log(error) });
 
                     }
@@ -265,7 +265,7 @@ class Bot {
                         await this.deleteMessage(chatId, msg.message_id, 0);
 
                         await this.bot.banChatMember(chatId, msg.from.id, {until_date: banTime}).then((result) => {
-                            console.log(result, 'banned');
+                            console.log('banned: ',msg,' ', result );
                         }).catch((error) => { console.log(error) });
 
                     }
