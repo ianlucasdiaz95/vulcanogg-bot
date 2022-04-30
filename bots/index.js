@@ -22,22 +22,23 @@ class InitBots {
     constructor() {
 
         if(process.env.NODE_ENV == 'production'){
+            
+            //new BotIN(botConfig.in);
+            //new BotFR(botConfig.fr);
 
             new BotEN(botConfig.en);
             new BotES(botConfig.es);
             new BotPT(botConfig.pt);
             new BotKR(botConfig.kr);
             new BotCN(botConfig.cn);
-            new BotIN(botConfig.in);
             new BotIND(botConfig.ind);
             new BotPH(botConfig.ph);
             new BotTR(botConfig.tr);
-            new BotFR(botConfig.fr);
             new BotSA(botConfig.sa);
             new BotVN(botConfig.vn);
             new BotNL(botConfig.nl);
             new BotDE(botConfig.de);
-
+            
         }else if(process.env.NODE_ENV == 'development'){
 
             new BotTEST(botConfig.test);
