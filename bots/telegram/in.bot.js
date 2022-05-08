@@ -90,8 +90,6 @@ class BotIN extends Bot {
                         [{ text: `🇹🇷 Turkish Samudaye`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇳 Indian Samudaye`, url:'https://t.me/vulcanoIN' }],
                         [{ text: `🇮🇩 Indonesian Samudaye`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇳🇱 Dutch Samudaye`, url:'https://t.me/vulcanodutch' }],
-                        [{ text: `🇸🇦 Arabic Samudaye`, url:'https://t.me/vulcanoarabic' }],
                         [{ text: `🇩🇪 German Samudaye`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]

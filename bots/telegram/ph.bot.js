@@ -87,8 +87,6 @@ class BotPH extends Bot {
                         [{ text: `🇵🇭 Filipino Community`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇩 Indonesian Community`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇳🇱 Dutch Community`, url:'https://t.me/vulcanodutch' }],
-                        [{ text: `🇸🇦 Arabic Community`, url:'https://t.me/vulcanoarabic' }],
                         [{ text: `🇩🇪 German Community`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]

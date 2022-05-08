@@ -25,6 +25,8 @@ class InitBots {
             
             //new BotIN(botConfig.in);
             //new BotFR(botConfig.fr);
+            //new BotNL(botConfig.nl);
+            //new BotSA(botConfig.sa);
 
             new BotEN(botConfig.en);
             new BotES(botConfig.es);
@@ -34,9 +36,7 @@ class InitBots {
             new BotIND(botConfig.ind);
             new BotPH(botConfig.ph);
             new BotTR(botConfig.tr);
-            new BotSA(botConfig.sa);
             new BotVN(botConfig.vn);
-            new BotNL(botConfig.nl);
             new BotDE(botConfig.de);
             
         }else if(process.env.NODE_ENV == 'development'){
