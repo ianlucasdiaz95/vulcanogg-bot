@@ -1,4 +1,4 @@
-
+bots/botConfig.js
 node_modules/*
 # Heroku environment configuration
 .env

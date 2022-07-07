@@ -87,7 +87,6 @@ class BotIND extends Bot {
                         [{ text: `🇵🇭 Komunitas Filipina`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Komunitas Turki`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇩 Komunitas Indonesia`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇩🇪 Komunitas German`, url:'https://t.me/vulcanoarabic' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

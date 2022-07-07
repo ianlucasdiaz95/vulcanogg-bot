@@ -87,7 +87,6 @@ class BotPT extends Bot {
                         [{ text: `🇵🇭 Comunidad Filipinas`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Comunidad Turca`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇩 Comunidad Indonesia`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇩🇪 Comunidad Alemã`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

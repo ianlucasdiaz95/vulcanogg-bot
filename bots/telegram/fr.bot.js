@@ -90,7 +90,6 @@ class BotFR extends Bot {
                         [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇳 Indian Community`, url:'https://t.me/vulcanoIN' }],
                         [{ text: `🇮🇩 Indonesian Community`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇩🇪 German Community`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })

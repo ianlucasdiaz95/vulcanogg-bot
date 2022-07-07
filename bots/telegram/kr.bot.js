@@ -87,7 +87,6 @@ class BotKR extends Bot {
                         [{ text: `🇵🇭 Filipino Community`, url:'https://t.me/vulcanoph' }],
                         [{ text: `🇹🇷 Turkish Community`, url:'https://t.me/vulcanoTR' }],
                         [{ text: `🇮🇩 Indonesian Community`, url:'https://t.me/vulcanoIDN' }],
-                        [{ text: `🇩🇪 German Community`, url:'https://t.me/vulcanogerman' }],
                         [{ text: `🟣 Discord`, url:'https://discord.gg/vulcanogame' }],
                         ]
                     })
